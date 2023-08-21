@@ -16,4 +16,4 @@ Project is created with:
 * Room
 * Clean Architecture
 
-![](C:\Users\ROSE PC\Downloads\Snipaste_2021-10-05_22-58-52.jpg)
+![](E:\Android\Android Studio Projects\TrainingApp\app\src\main\res\drawable\mvvm_clean.jpg)
