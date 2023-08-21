@@ -18,5 +18,3 @@ Project is created with:
 
 ![](E:\Android\Android Studio Projects\TrainingApp\app\src\main\res\drawable\mvvm_clean.jpg)
 
-
-
