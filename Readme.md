@@ -3,6 +3,7 @@
 * In this project, we want to strengthen our skills and learn new technologies
 
 ## Architecture
+* Clean Architecture
 
 ### Technologies
 
@@ -15,6 +16,9 @@ Project is created with:
 * kotlin Coroutine
 * Room
 * Clean Architecture
+* Modular structure
+* Unit tests
+* Ui tests
+* CI/CD (optional)
 
-![](E:\Android\Android Studio Projects\TrainingApp\app\src\main\res\drawable\mvvm_clean.jpg)
 
