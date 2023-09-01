@@ -1,46 +1,85 @@
 package msi.paria.trainingapp
 
+import io.bloco.faker.Faker
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 
 class SampleViewModelTest {
-    @Test
-    fun validate_email_isCorrect(){
-        val sampleViewModel = SampleViewModel()
-        val email = "paria.m7616@gmail.com"
-        sampleViewModel.onEmailChanged(email)
-        sampleViewModel.onSubmitButtonClicked()
-        assert(true) { sampleViewModel.emailValidateState.value }
+    lateinit var sampleViewModel: SampleViewModel
+    lateinit var email : String
+    lateinit var faker : Faker
+
+    @Before
+    fun initValues() {
+        sampleViewModel = SampleViewModel()
+        faker = Faker()
     }
 
     @Test
-    fun email_isWrong(){
-        val sampleViewModel = SampleViewModel()
-        val email = "paria."
+    fun test_email_isCorrect() {
+        email = faker.internet.email()
         sampleViewModel.onEmailChanged(email)
         sampleViewModel.onSubmitButtonClicked()
-        assert(false) { sampleViewModel.emailValidateState.value }
+        assertTrue(sampleViewModel.emailValidateState.value)
     }
+
     @Test
-    fun email_isEmpty(){
-        val sampleViewModel = SampleViewModel()
-        val email = ""
+    fun test_email_isWrong() {
+        email = "paria."
         sampleViewModel.onEmailChanged(email)
         sampleViewModel.onSubmitButtonClicked()
-        assert(false) { sampleViewModel.emailValidateState.value }
+        assertFalse(sampleViewModel.emailValidateState.value)
     }
+
     @Test
-    fun email_isCorrect_button_not_clicked(){
-        val sampleViewModel = SampleViewModel()
-        val email = "paria.m7616@gmail.com"
+    fun test_email_isEmpty() {
+        email = ""
         sampleViewModel.onEmailChanged(email)
-        assert(false) { sampleViewModel.emailValidateState.value }
+        sampleViewModel.onSubmitButtonClicked()
+        assertFalse(sampleViewModel.emailValidateState.value)
+    }
+
+    @Test
+    fun test_email_isCorrect_button_not_clicked() {
+        email = faker.internet.email()
+        sampleViewModel.onEmailChanged(email)
+        assertFalse(sampleViewModel.emailValidateState.value)
+    }
+
+    @Test
+    fun test_email_isCorrect_email_changed_not_received() {
+        email = faker.internet.email()
+        sampleViewModel.onSubmitButtonClicked()
+        assertFalse(sampleViewModel.emailValidateState.value)
     }
     @Test
-    fun email_isCorrect_email_changed_not_received(){
-        val sampleViewModel = SampleViewModel()
-        val email = "paria.m7616@gmail.com"
+    fun test_multiple_email_entered() {
+        email = faker.internet.email()
+        email = faker.internet.email()
+        email = "@gmail.com"
+        sampleViewModel.onEmailChanged(email)
         sampleViewModel.onSubmitButtonClicked()
-        assert(false) { sampleViewModel.emailValidateState.value }
+        assertFalse(sampleViewModel.emailValidateState.value)
+    }
+    @Test
+    fun test_several_time_button_clicked() {
+        email = faker.internet.email()
+        sampleViewModel.onEmailChanged(email)
+        sampleViewModel.onSubmitButtonClicked()
+        sampleViewModel.onSubmitButtonClicked()
+        sampleViewModel.onSubmitButtonClicked()
+        assertTrue(sampleViewModel.emailValidateState.value)
+    }
+
+    @Test
+    fun test_several_time_button_clicked_and_email_not_changed() {
+        email = faker.internet.email()
+        sampleViewModel.onSubmitButtonClicked()
+        sampleViewModel.onSubmitButtonClicked()
+        sampleViewModel.onSubmitButtonClicked()
+        assertFalse(sampleViewModel.emailValidateState.value)
     }
 
 }
