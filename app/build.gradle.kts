@@ -14,6 +14,9 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        compileSdkPreview = "UpsideDownCake"
+
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -34,7 +37,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 
     packaging {
@@ -42,13 +45,28 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
+
 }
 
 dependencies {
-    implementation ("com.google.android.material:material:1.9.0")
+
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+
+
+    implementation ("androidx.activity:activity-compose:1.7.2")
+    implementation ("androidx.compose.material3:material3:1.1.1")
+
     implementation ("androidx.compose.ui:ui:1.5.0")
-    implementation ("androidx.compose.ui:ui-graphics:1.5.0")
     implementation ("androidx.compose.ui:ui-tooling-preview:1.5.0")
+    implementation ("androidx.compose.ui:ui-graphics:1.5.0")
 
 
     testImplementation("junit:junit:4.13.2")
