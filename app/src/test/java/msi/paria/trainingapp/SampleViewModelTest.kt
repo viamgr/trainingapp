@@ -53,7 +53,9 @@ class SampleViewModelTest {
     @Test
     fun GivenMultipleEmail_WhenEmailChangedAndSubmitClicked_ThenValidationShouldBeFalse() {
         var email = "paria.m7616@gmial.com"
+        sampleViewModel.onEmailChanged(email)
         email = "pariamsi.m7616@gmial.com"
+        sampleViewModel.onEmailChanged(email)
         email = "@gmail.com"
         sampleViewModel.onEmailChanged(email)
         sampleViewModel.onSubmitButtonClicked()
