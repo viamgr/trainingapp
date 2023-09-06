@@ -1,8 +1,9 @@
-package msi.paria.trainingapp
+package msi.paria.trainingapp.pages.main.iface
 
 import androidx.compose.runtime.State
+import msi.paria.trainingapp.pages.main.state.MainPageState
 
-interface MainViewModelImpl {
+interface MainViewModelContract {
 
     fun setEmail(email : String)
 
