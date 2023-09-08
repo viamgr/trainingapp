@@ -19,12 +19,12 @@ import msi.paria.trainingapp.pages.main.state.MainPageState
 
 
 @Composable
-fun MainPageView(pageState: State<MainPageState>, setEmail: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit) {
+fun MainPageView(pageState: State<MainPageState>, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit) {
     Column(
         Modifier.padding(all = 16.dp),
         verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TextFiledView(pageState.value.email, pageState.value.isEmailCorrect, setEmail)
+        TextFiledView(pageState.value.email, pageState.value.isEmailCorrect, onEmailChanged)
         CheckButtonView(onSubmitButtonClick)
     }
 }
