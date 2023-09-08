@@ -8,23 +8,21 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.flow.StateFlow
 import msi.paria.trainingapp.R
 
 
 @Composable
-fun RegisterPageView(userEmail: StateFlow<String>, emailValidateState: StateFlow<Boolean>, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit) {
+fun RegisterPageView(userEmail: String, emailValidateState: Boolean, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit) {
     Column(
         Modifier.padding(all = 16.dp),
         verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TextFiledView(userEmail.collectAsState().value, emailValidateState.collectAsState().value, onEmailChanged)
+        TextFiledView(userEmail, emailValidateState, onEmailChanged)
         CheckButtonView(onSubmitButtonClick)
     }
 }
@@ -45,6 +43,20 @@ fun CheckButtonView(onSubmitButtonClick: () -> Unit) {
             Text(stringResource(R.string.check))
         })
 }
+
+
+@Preview
+@Composable
+fun IncorrectEmailRegisterPageView() {
+    RegisterPageView("aaaa", false, {}, {})
+}
+
+@Preview
+@Composable
+fun CorrectEmailRegisterPageView() {
+    RegisterPageView("a@b.com", true, {}, {})
+}
+
 
 @Preview
 @Composable

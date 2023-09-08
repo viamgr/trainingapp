@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModelProvider
@@ -23,8 +24,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-                RegisterPageView(mainActivityViewModel.userEmail,
-                    mainActivityViewModel.emailValidateState,
+                RegisterPageView(mainActivityViewModel.userEmail.collectAsState().value,
+                    mainActivityViewModel.emailValidateState.collectAsState().value,
                     onEmailChanged = {
                         mainActivityViewModel.onEmailChanged(it)
                     },
