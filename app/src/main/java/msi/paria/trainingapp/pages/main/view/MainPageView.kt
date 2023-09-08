@@ -8,23 +8,23 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.flow.StateFlow
 import msi.paria.trainingapp.R
-import msi.paria.trainingapp.pages.main.state.MainPageState
 
 
 @Composable
-fun MainPageView(pageState: State<MainPageState>, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit) {
+fun MainPageView(userEmail: StateFlow<String>, emailValidateState: StateFlow<Boolean>, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit) {
     Column(
         Modifier.padding(all = 16.dp),
         verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TextFiledView(pageState.value.email, pageState.value.isEmailCorrect, onEmailChanged)
+        TextFiledView(userEmail.collectAsState().value, emailValidateState.collectAsState().value, onEmailChanged)
         CheckButtonView(onSubmitButtonClick)
     }
 }

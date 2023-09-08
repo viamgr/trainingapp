@@ -1,16 +1,17 @@
 package msi.paria.trainingapp
 
+import msi.paria.trainingapp.pages.main.view_model.RegisterViewModel
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
 class SampleViewModelTest {
-    lateinit var sampleViewModel: SampleViewModel
+    lateinit var sampleViewModel: RegisterViewModel
 
     @Before
     fun initValues() {
-        sampleViewModel = SampleViewModel()
+        sampleViewModel = RegisterViewModel()
     }
 
     @Test

@@ -5,25 +5,32 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import msi.paria.trainingapp.pages.main.state.MainPageState
+import androidx.lifecycle.ViewModelProvider
 import msi.paria.trainingapp.pages.main.view.MainPageView
+import msi.paria.trainingapp.pages.main.view_model.RegisterViewModel
 
 
 class MainActivity : ComponentActivity() {
 
+    lateinit var mainActivityViewModel: RegisterViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val samplePageState = mutableStateOf(MainPageState())
+        mainActivityViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
 
         setContent {
             Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-                MainPageView(pageState = samplePageState, onEmailChanged = {
-                    samplePageState.value = samplePageState.value.copy(it, it.contains("@"))
-                }, onSubmitButtonClick = {})
+                MainPageView(mainActivityViewModel.userEmail,
+                    mainActivityViewModel.emailValidateState,
+                    onEmailChanged = {
+                        mainActivityViewModel.onEmailChanged(it)
+                    },
+                    onSubmitButtonClick = {
+                        mainActivityViewModel.onSubmitButtonClicked()
+                    })
             }
         }
     }
