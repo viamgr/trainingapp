@@ -37,9 +37,7 @@ fun TextFiledView(email: String, isEmailCorrect: Boolean, onEmailChanged: (newEm
 @Composable
 fun CheckButtonView(onSubmitButtonClick: () -> Unit) {
     Button(modifier = Modifier.fillMaxWidth(),
-        onClick = {
-            onSubmitButtonClick.invoke()
-        }, content = {
+        onClick = onSubmitButtonClick, content = {
             Text(stringResource(R.string.check))
         })
 }
