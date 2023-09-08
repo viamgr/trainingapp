@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-                MainPageView(pageState = samplePageState, setEmail = {
+                MainPageView(pageState = samplePageState, onEmailChanged = {
                     samplePageState.value = samplePageState.value.copy(it, it.contains("@"))
                 }, onSubmitButtonClick = {})
             }
