@@ -28,9 +28,9 @@ fun RegisterPageView(userEmail: String, emailValidateState: Boolean, onEmailChan
 }
 
 @Composable
-fun TextFiledView(email: String, isEmailCorrect: Boolean, setEmail: (newEmail: String) -> Unit) {
+fun TextFiledView(email: String, isEmailCorrect: Boolean, onEmailChanged: (newEmail: String) -> Unit) {
     TextField(email, onValueChange = {
-        setEmail(it)
+        onEmailChanged(it)
     }, modifier = Modifier.fillMaxWidth(), isError = !isEmailCorrect)
 }
 
