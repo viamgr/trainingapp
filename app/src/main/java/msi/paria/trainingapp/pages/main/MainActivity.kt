@@ -15,22 +15,22 @@ import msi.paria.trainingapp.pages.main.view_model.RegisterViewModel
 
 class MainActivity : ComponentActivity() {
 
-    lateinit var mainActivityViewModel: RegisterViewModel
+    private lateinit var registerViewModel: RegisterViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mainActivityViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
+        registerViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
 
         setContent {
             Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-                RegisterPageView(mainActivityViewModel.userEmail.collectAsState().value,
-                    mainActivityViewModel.emailValidateState.collectAsState().value,
+                RegisterPageView(registerViewModel.userEmail.collectAsState().value,
+                    registerViewModel.emailValidateState.collectAsState().value,
                     onEmailChanged = {
-                        mainActivityViewModel.onEmailChanged(it)
+                        registerViewModel.onEmailChanged(it)
                     },
                     onSubmitButtonClick = {
-                        mainActivityViewModel.onSubmitButtonClicked()
+                        registerViewModel.onSubmitButtonClicked()
                     })
             }
         }
