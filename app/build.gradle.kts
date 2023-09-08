@@ -5,17 +5,14 @@ plugins {
 
 android {
     namespace = "msi.paria.trainingapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "msi.paria.trainingapp"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
-        compileSdkPreview = "UpsideDownCake"
-
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
