@@ -8,7 +8,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModelProvider
-import msi.paria.trainingapp.pages.main.view.MainPageView
+import msi.paria.trainingapp.pages.main.view.RegisterPageView
 import msi.paria.trainingapp.pages.main.view_model.RegisterViewModel
 
 
@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-                MainPageView(mainActivityViewModel.userEmail,
+                RegisterPageView(mainActivityViewModel.userEmail,
                     mainActivityViewModel.emailValidateState,
                     onEmailChanged = {
                         mainActivityViewModel.onEmailChanged(it)

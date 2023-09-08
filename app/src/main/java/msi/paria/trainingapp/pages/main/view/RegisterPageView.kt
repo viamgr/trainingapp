@@ -19,7 +19,7 @@ import msi.paria.trainingapp.R
 
 
 @Composable
-fun MainPageView(userEmail: StateFlow<String>, emailValidateState: StateFlow<Boolean>, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit) {
+fun RegisterPageView(userEmail: StateFlow<String>, emailValidateState: StateFlow<Boolean>, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit) {
     Column(
         Modifier.padding(all = 16.dp),
         verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
