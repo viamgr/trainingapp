@@ -1,6 +1,5 @@
-package msi.paria.trainingapp
+package com.training.app.trainingapp
 
-import android.util.Patterns
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

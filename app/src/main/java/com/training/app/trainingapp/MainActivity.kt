@@ -1,4 +1,4 @@
-package msi.paria.trainingapp
+package com.training.app.trainingapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
