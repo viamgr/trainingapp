@@ -10,6 +10,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,12 +32,12 @@ fun RegisterPageView(userEmail: String, emailValidateState: Boolean, onEmailChan
 fun TextFiledView(email: String, isEmailCorrect: Boolean, onEmailChanged: (newEmail: String) -> Unit) {
     TextField(email, onValueChange = {
         onEmailChanged(it)
-    }, modifier = Modifier.fillMaxWidth(), isError = !isEmailCorrect)
+    }, modifier = Modifier.fillMaxWidth().testTag("textFiled"), isError = !isEmailCorrect)
 }
 
 @Composable
 fun CheckButtonView(onSubmitButtonClick: () -> Unit) {
-    Button(modifier = Modifier.fillMaxWidth(),
+    Button(modifier = Modifier.fillMaxWidth().testTag("button"),
         onClick = onSubmitButtonClick, content = {
             Text(stringResource(R.string.check))
         })
