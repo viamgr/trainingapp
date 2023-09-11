@@ -1,4 +1,4 @@
-package msi.paria.trainingapp
+package msi.paria.trainingapp.view_model
 
 import msi.paria.trainingapp.pages.main.view_model.RegisterViewModel
 import org.junit.Assert.assertFalse
@@ -6,7 +6,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
-class SampleViewModelTest {
+class RegisterViewModelTest {
     lateinit var sampleViewModel: RegisterViewModel
 
     @Before
