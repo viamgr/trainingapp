@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -69,6 +70,7 @@ class RegisterPageViewTest {
         showSampleTextFiled("", false) { email = it }
 
         composeTestRule.onNodeWithTag("textFiled").performTextInput("Hi")
+        composeTestRule.onNodeWithTag("textFiled").assertIsEnabled()
         TestCase.assertEquals(email, "Hi")
     }
 
