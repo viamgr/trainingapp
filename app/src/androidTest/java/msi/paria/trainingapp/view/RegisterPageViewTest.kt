@@ -1,4 +1,4 @@
-package msi.paria.trainingapp.view_model
+package msi.paria.trainingapp.view
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
