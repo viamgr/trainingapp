@@ -8,7 +8,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModelProvider
+import msi.paria.trainingapp.R
 import msi.paria.trainingapp.pages.main.view.RegisterPageView
 import msi.paria.trainingapp.pages.main.view_model.RegisterViewModel
 
@@ -24,11 +26,13 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-                RegisterPageView(registerViewModel.userEmail.collectAsState().value,
+                RegisterPageView("textFiledId", registerViewModel.userEmail.collectAsState().value,
                     registerViewModel.emailValidateState.collectAsState().value,
                     onEmailChanged = {
                         registerViewModel.onEmailChanged(it)
                     },
+                    "buttonId",
+                    stringResource(id = R.string.check),
                     onSubmitButtonClick = {
                         registerViewModel.onSubmitButtonClicked()
                     })
