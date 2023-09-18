@@ -1,5 +1,6 @@
-package msi.paria.trainingapp
+package com.training.trainingapp
 
+import com.training.app.trainingapp.SampleViewModel
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
