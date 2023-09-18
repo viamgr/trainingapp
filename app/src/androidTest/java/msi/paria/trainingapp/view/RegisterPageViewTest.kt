@@ -32,8 +32,8 @@ class RegisterPageViewTest {
                 })
         }
 
-        composeTestRule.onNodeWithTag("textFiled").assertExists()
-        composeTestRule.onNodeWithTag("button").assertExists()
+        composeTestRule.onNodeWithTag(textFiledId).assertExists()
+        composeTestRule.onNodeWithTag(buttonId).assertExists()
     }
 
 }
