@@ -23,10 +23,15 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
+
         setContent {
             Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-                RegisterPageView(registerViewModel.userEmail.collectAsState().value,
-                    registerViewModel.emailValidateState.collectAsState().value,
+                val email = registerViewModel.userEmail.collectAsState().value
+                val emailStatus = registerViewModel.emailValidateState.collectAsState().value
+                RegisterPageView(email,
+                    emailStatus,
                     onEmailChanged = {
                         registerViewModel.onEmailChanged(it)
                     },
