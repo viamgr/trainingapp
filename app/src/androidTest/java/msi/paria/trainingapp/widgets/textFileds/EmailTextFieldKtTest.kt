@@ -1,5 +1,8 @@
 package msi.paria.trainingapp.widgets.textFileds
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -45,7 +48,7 @@ class EmailTextFieldKtTest {
     private fun showSampleTextFiled(email: String, isEmailCorrect: Boolean, onEmailChanged: (newEmail: String) -> Unit) {
         composeTestRule.setContent {
             EmailTextFiledView(
-                id,
+                Modifier.fillMaxWidth().testTag(id),
                 email, isEmailCorrect,
                 onEmailChanged = onEmailChanged
             )

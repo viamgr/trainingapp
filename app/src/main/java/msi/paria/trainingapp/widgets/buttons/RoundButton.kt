@@ -10,10 +10,8 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-fun RoundButtonView(id: String, text: String, onSubmitButtonClick: () -> Unit) {
-    Button(modifier = Modifier
-        .fillMaxWidth()
-        .testTag(id),
+fun RoundButtonView(modifier: Modifier, text: String, onSubmitButtonClick: () -> Unit) {
+    Button(modifier = modifier,
         onClick = onSubmitButtonClick, content = {
             Text(text)
         })
@@ -23,5 +21,5 @@ fun RoundButtonView(id: String, text: String, onSubmitButtonClick: () -> Unit) {
 @Preview
 @Composable
 fun CheckRoundButtonPreview() {
-    RoundButtonView("", "check") {}
+    RoundButtonView(Modifier.fillMaxWidth(), "check") {}
 }

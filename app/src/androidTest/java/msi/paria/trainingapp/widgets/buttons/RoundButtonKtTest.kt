@@ -1,5 +1,8 @@
 package msi.paria.trainingapp.widgets.buttons
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -44,7 +47,9 @@ class RoundButtonKtTest {
     private fun showSampleCheckButton(name: String, onSubmitButtonClick: () -> Unit) {
         composeTestRule.setContent {
             RoundButtonView(
-                id,
+                Modifier
+                    .fillMaxWidth()
+                    .testTag(id),
                 name,
                 onSubmitButtonClick = onSubmitButtonClick
             )

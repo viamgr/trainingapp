@@ -22,11 +22,10 @@ class RegisterPageViewTest {
     fun givenView_WhenViewCreate_ThenShouldAllViewDisplayed() {
 
         composeTestRule.setContent {
-            RegisterPageView(textFiledId, "",
+            RegisterPageView("",
                 false,
                 onEmailChanged = {
                 },
-                buttonId,
                 "",
                 onSubmitButtonClick = {
                 })
