@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "msi.paria.trainingapp"
+    namespace = "com.training.app.trainingapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "msi.paria.trainingapp"
+        applicationId = "com.training.app.trainingapp"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
