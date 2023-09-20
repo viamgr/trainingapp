@@ -9,8 +9,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
-import com.training.app.trainingapp.R
 import com.training.app.trainingapp.main.view.RegisterPageView
 import com.training.app.trainingapp.main.view_model.RegisterViewModel
 
@@ -23,9 +21,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
-
         setContent {
             Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
                 val email = registerViewModel.userEmail.collectAsState().value
@@ -35,7 +30,6 @@ class MainActivity : ComponentActivity() {
                     onEmailChanged = {
                         registerViewModel.onEmailChanged(it)
                     },
-                    stringResource(id = R.string.check),
                     onSubmitButtonClick = {
                         registerViewModel.onSubmitButtonClicked()
                     })
