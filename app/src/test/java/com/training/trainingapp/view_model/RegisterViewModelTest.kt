@@ -1,17 +1,17 @@
-package com.training.trainingapp
+package com.training.trainingapp.view_model
 
-import com.training.app.trainingapp.SampleViewModel
+import com.training.app.trainingapp.main.view_model.RegisterViewModel
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
-class SampleViewModelTest {
-    lateinit var sampleViewModel: SampleViewModel
+class RegisterViewModelTest {
+    lateinit var sampleViewModel: RegisterViewModel
 
     @Before
     fun initValues() {
-        sampleViewModel = SampleViewModel()
+        sampleViewModel = RegisterViewModel()
     }
 
     @Test
@@ -47,7 +47,6 @@ class SampleViewModelTest {
 
     @Test
     fun GivenCorrectEmail_WhenEmailNotChangedAndSubmitClicked_ThenValidationShouldBeFalse() {
-        val email = "paria.m7616@gmial.com"
         sampleViewModel.onSubmitButtonClicked()
         assertFalse(sampleViewModel.emailValidateState.value)
     }
@@ -74,7 +73,6 @@ class SampleViewModelTest {
 
     @Test
     fun GivenCorrectEmail_WhenEmailNotChangedAndSubmitClickedSeveralTime_ThenValidationShouldBeFalse() {
-        val email = "paria.m7616@gmial.com"
         sampleViewModel.onSubmitButtonClicked()
         sampleViewModel.onSubmitButtonClicked()
         sampleViewModel.onSubmitButtonClicked()
