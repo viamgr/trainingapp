@@ -1,12 +1,11 @@
-package msi.paria.trainingapp
+package com.training.app.trainingapp.main.view_model
 
-import android.util.Patterns
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class SampleViewModel : ViewModel() {
+class RegisterViewModel : ViewModel() {
 
     private val _userEmail = MutableStateFlow("")
     val userEmail : StateFlow<String> = _userEmail

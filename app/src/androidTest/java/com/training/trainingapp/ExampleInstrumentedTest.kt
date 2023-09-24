@@ -1,4 +1,4 @@
-package msi.paria.trainingapp
+package com.training.trainingapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("msi.paria.trainingapp", appContext.packageName)
+        assertEquals("com.training.app.trainingapp", appContext.packageName)
     }
 }
