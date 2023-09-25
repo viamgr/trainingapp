@@ -1,4 +1,4 @@
-package msi.paria.trainingapp
+package com.training.trainingapp
 
 import org.junit.Test
 
