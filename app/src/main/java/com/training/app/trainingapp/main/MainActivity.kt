@@ -11,8 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.training.app.trainingapp.main.view.RegisterPageView
 import com.training.app.trainingapp.main.view_model.RegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val registerViewModel: RegisterViewModel by viewModels()

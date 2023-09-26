@@ -1,4 +1,4 @@
-package msi.paria.trainingapp
+package com.training.app.trainingapp.core
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
