@@ -2,6 +2,7 @@ package com.training.app.trainingapp.main.view.forget_password
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun ForgetPasswordScreen(viewModel: ForgetPasswordViewModel) {
@@ -10,4 +11,10 @@ fun ForgetPasswordScreen(viewModel: ForgetPasswordViewModel) {
         viewModel.emailValidateState.collectAsState().value,
         {},
         {})
+}
+
+@Preview
+@Composable
+fun ForgetPasswordScreenPreview() {
+    ForgetPasswordScreen(ForgetPasswordViewModel())
 }
