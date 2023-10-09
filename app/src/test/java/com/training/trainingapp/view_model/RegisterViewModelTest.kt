@@ -1,6 +1,6 @@
 package com.training.trainingapp.view_model
 
-import com.training.app.trainingapp.main.view_model.RegisterViewModel
+import com.training.app.trainingapp.feature_authentication.presentaion.register.RegisterViewModel
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before

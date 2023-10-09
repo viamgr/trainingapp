@@ -14,7 +14,7 @@
         android:theme="@style/Theme.TrainingApp"
         tools:targetApi="31">
         <activity
-            android:name=".main.MainActivity"
+            android:name=".feature_authentication.presentaion.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.TrainingApp">

@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main
+package com.training.app.trainingapp.feature_authentication.presentaion
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,8 +9,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.training.app.trainingapp.main.view.RegisterPageView
-import com.training.app.trainingapp.main.view_model.RegisterViewModel
+import com.training.app.trainingapp.feature_authentication.presentaion.register.RegisterPageView
+import com.training.app.trainingapp.feature_authentication.presentaion.register.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

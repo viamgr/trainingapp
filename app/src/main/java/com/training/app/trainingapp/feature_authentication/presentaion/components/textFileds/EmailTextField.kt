@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.widgets.textFileds
+package com.training.app.trainingapp.feature_authentication.presentaion.components.textFileds
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.TextField

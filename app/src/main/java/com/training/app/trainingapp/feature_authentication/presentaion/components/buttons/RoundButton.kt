@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.widgets.buttons
+package com.training.app.trainingapp.feature_authentication.presentaion.components.buttons
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button

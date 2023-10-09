@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view
+package com.training.app.trainingapp.feature_authentication.presentaion.forget_password
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,13 +13,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.training.app.trainingapp.R
 import com.training.app.trainingapp.utils.TestTags
-import com.training.app.trainingapp.widgets.buttons.RoundButtonView
-import com.training.app.trainingapp.widgets.textFileds.EmailTextFiledView
-
+import com.training.app.trainingapp.feature_authentication.presentaion.components.buttons.RoundButtonView
+import com.training.app.trainingapp.feature_authentication.presentaion.components.textFileds.EmailTextFiledView
 
 @Composable
-fun RegisterPageView(
-    userEmail: String, emailValidateState: Boolean, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit
+fun ForgetPasswordContent(
+    userEmail: String,
+    emailValidateState: Boolean,
+    onEmailChanged: (newEmail: String) -> Unit,
+    onSubmitButtonClick: () -> Unit
 ) {
     Column(
         Modifier.padding(all = 16.dp),
@@ -28,19 +30,23 @@ fun RegisterPageView(
         EmailTextFiledView(
             Modifier
                 .fillMaxWidth()
-                .testTag(TestTags.EMAIL_TEXT_FILED_ID), userEmail, emailValidateState, onEmailChanged
+                .testTag(TestTags.PASSWORD_RECOVERY_EMAIL_TEXT_FILED_ID),
+            userEmail,
+            emailValidateState,
+            onEmailChanged
         )
         RoundButtonView(
             Modifier
                 .fillMaxWidth()
-                .testTag(TestTags.CHECK_BUTTON_ID), stringResource(id = R.string.check), onSubmitButtonClick
+                .testTag(TestTags.PASSWORD_RECOVERY_BUTTON_ID),
+            stringResource(id = R.string.password_recovery),
+            onSubmitButtonClick
         )
     }
 }
 
-
 @Preview
 @Composable
-fun ShowRegisterPageView() {
-    RegisterPageView("email", false, {}, {})
+fun ForgotPasswordContentPreview() {
+    ForgetPasswordContent("email", false, {}, {})
 }

@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view_model
+package com.training.app.trainingapp.feature_authentication.presentaion.register
 
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.ViewModel
