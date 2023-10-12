@@ -7,10 +7,10 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun ForgetPasswordScreen(viewModel: ForgetPasswordViewModel) {
     ForgetPasswordContent(
-        viewModel.userEmail.collectAsState().value,
-        viewModel.emailValidateState.collectAsState().value,
-        {},
-        {})
+        userEmail = viewModel.userEmail.collectAsState().value,
+        emailValidateState = viewModel.emailValidateState.collectAsState().value,
+        onEmailChanged = {},
+        onSubmitButtonClick = {})
 }
 
 @Preview
