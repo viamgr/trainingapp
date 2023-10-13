@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.feature_authentication.presentaion.forget_password
+package com.training.app.trainingapp.feature_authentication.presentaion.forgetpassword
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,8 +13,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.training.app.trainingapp.R
 import com.training.app.trainingapp.utils.TestTags
-import com.training.app.trainingapp.feature_authentication.presentaion.components.buttons.RoundButtonView
-import com.training.app.trainingapp.feature_authentication.presentaion.components.textFileds.EmailTextFiledView
+import com.training.app.trainingapp.view.components.buttons.RoundButtonView
+import com.training.app.trainingapp.view.components.textFileds.EmailTextFiledView
 
 @Composable
 fun ForgetPasswordContent(

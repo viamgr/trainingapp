@@ -7,7 +7,7 @@ import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
-import com.training.app.trainingapp.feature_authentication.presentaion.components.buttons.RoundButtonView
+import com.training.app.trainingapp.view.components.buttons.RoundButtonView
 import junit.framework.TestCase
 import org.junit.Rule
 import org.junit.Test

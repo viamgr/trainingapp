@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.feature_authentication.presentaion.forget_password
+package com.training.app.trainingapp.feature_authentication.presentaion.forgetpassword
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState

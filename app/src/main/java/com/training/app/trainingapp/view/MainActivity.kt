@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.feature_authentication.presentaion
+package com.training.app.trainingapp.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
