@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TrainingApp"
 include(":app")
-include(":data_layer:authorization")
+include(":data:authorization")
