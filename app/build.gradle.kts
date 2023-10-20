@@ -56,6 +56,16 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.3"
     }
+
+    flavorDimensions.add("type")
+    productFlavors {
+        create("Api") {
+        }
+
+        create("Mock") {
+        }
+    }
+
 }
 
 dependencies {
@@ -77,8 +87,13 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.3")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.0-alpha07")
 
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
+
+
+    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":data:authorization")))
+
 }
 
 kapt {
