@@ -1,4 +1,5 @@
 import java.net.URI
+
 pluginManagement {
     repositories {
         google()
@@ -16,4 +17,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "TrainingApp"
 include(":app")
+include(":domain")
 include(":data:authorization")

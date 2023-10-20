@@ -2,5 +2,6 @@
     <string name="app_name">TrainingApp</string>
 
     <string name="check">Check</string>
+    <string name="password_recovery">Password Recovery</string>
 
 </resources>
