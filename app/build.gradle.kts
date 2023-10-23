@@ -69,27 +69,26 @@ android {
 }
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
-    implementation("androidx.activity:activity-compose:1.8.0")
-    implementation("androidx.compose.material3:material3:1.1.2")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.5.3")
-    implementation("androidx.compose.ui:ui:1.5.3")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.3")
-    implementation("androidx.compose.ui:ui-graphics:1.5.3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation("androidx.test.ext:junit-ktx:1.1.5")
+    implementation(platform(libs.kotlin.bom))
 
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.3")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.0-alpha07")
-    implementation("androidx.test.ext:junit-ktx:1.1.5")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.3")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.0-alpha07")
+    implementation(libs.compose.ui)
+    implementation(libs.compose.activity)
+    implementation(libs.material3)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.ui.graphics)
 
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 
+    implementation(libs.test.ktx)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.test.espresso)
+    androidTestImplementation(libs.test.ktx)
+    androidTestImplementation(libs.compose.ui.test)
+
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
 
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data:authorization")))
