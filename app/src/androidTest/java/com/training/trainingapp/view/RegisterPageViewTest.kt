@@ -4,7 +4,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.training.app.trainingapp.utils.TestTags
-import com.training.app.trainingapp.main.view.RegisterPageView
+import com.training.app.trainingapp.main.view.register.RegisterContent
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,11 +19,13 @@ class RegisterPageViewTest {
     fun givenView_WhenViewCreate_ThenShouldAllViewDisplayed() {
 
         composeTestRule.setContent {
-            RegisterPageView("",
+            RegisterContent("",
                 false,
                 onEmailChanged = {
                 },
                 onSubmitButtonClick = {
+                },
+                onForgetPasswordClick = {
                 })
         }
 

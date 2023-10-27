@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view.forget_password
+package com.training.app.trainingapp.main.view_model
 
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.ViewModel

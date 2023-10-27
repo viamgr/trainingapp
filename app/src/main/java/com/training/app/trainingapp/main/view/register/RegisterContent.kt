@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view
+package com.training.app.trainingapp.main.view.register
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,11 +15,16 @@ import com.training.app.trainingapp.R
 import com.training.app.trainingapp.utils.TestTags
 import com.training.app.trainingapp.widgets.buttons.RoundButtonView
 import com.training.app.trainingapp.widgets.textFileds.EmailTextFiledView
+import com.training.app.trainingapp.widgets.texts.Text
 
 
 @Composable
-fun RegisterPageView(
-    userEmail: String, emailValidateState: Boolean, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit
+fun RegisterContent(
+    userEmail: String,
+    emailValidateState: Boolean,
+    onEmailChanged: (newEmail: String) -> Unit,
+    onSubmitButtonClick: () -> Unit,
+    onForgetPasswordClick: () -> Unit
 ) {
     Column(
         Modifier.padding(all = 16.dp),
@@ -28,12 +33,23 @@ fun RegisterPageView(
         EmailTextFiledView(
             Modifier
                 .fillMaxWidth()
-                .testTag(TestTags.EMAIL_TEXT_FILED_ID), userEmail, emailValidateState, onEmailChanged
+                .testTag(TestTags.EMAIL_TEXT_FILED_ID),
+            userEmail,
+            emailValidateState,
+            onEmailChanged
         )
         RoundButtonView(
             Modifier
                 .fillMaxWidth()
-                .testTag(TestTags.CHECK_BUTTON_ID), stringResource(id = R.string.check), onSubmitButtonClick
+                .testTag(TestTags.CHECK_BUTTON_ID),
+            stringResource(id = R.string.check),
+            onSubmitButtonClick
+        )
+        Text(
+            modifier = Modifier
+                .testTag(TestTags.FORGET_PASSWORD_TEXT_ID),
+            text = stringResource(id = R.string.forget_password),
+            onForgetPasswordClick
         )
     }
 }
@@ -42,5 +58,5 @@ fun RegisterPageView(
 @Preview
 @Composable
 fun ShowRegisterPageView() {
-    RegisterPageView("email", false, {}, {})
+    RegisterContent("email", false, {}, {},{})
 }
