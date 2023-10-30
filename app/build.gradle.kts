@@ -81,7 +81,7 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     implementation("androidx.navigation:navigation-compose:2.7.4")
-
+    androidTestImplementation ("androidx.navigation:navigation-testing:2.7.4")
 }
 
 kapt {
