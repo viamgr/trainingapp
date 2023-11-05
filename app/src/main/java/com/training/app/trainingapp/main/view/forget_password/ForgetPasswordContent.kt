@@ -18,8 +18,7 @@ import com.training.app.trainingapp.widgets.textFileds.EmailTextFiledView
 
 @Composable
 fun ForgetPasswordContent(
-    userEmail: String,
-    emailValidateState: Boolean,
+    state: ForgetPasswordState,
     onEmailChanged: (newEmail: String) -> Unit,
     onSubmitButtonClick: () -> Unit
 ) {
@@ -31,8 +30,8 @@ fun ForgetPasswordContent(
             Modifier
                 .fillMaxWidth()
                 .testTag(TestTags.PASSWORD_RECOVERY_EMAIL_TEXT_FILED_ID),
-            userEmail,
-            emailValidateState,
+            state.email,
+            state.emailValidateState,
             onEmailChanged
         )
         RoundButtonView(
@@ -48,5 +47,5 @@ fun ForgetPasswordContent(
 @Preview
 @Composable
 fun ForgotPasswordContentPreview() {
-    ForgetPasswordContent("email", false, {}, {})
+    ForgetPasswordContent(ForgetPasswordState(), {}, {})
 }
