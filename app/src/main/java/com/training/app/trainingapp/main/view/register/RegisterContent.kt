@@ -1,5 +1,6 @@
 package com.training.app.trainingapp.main.view.register
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -47,7 +48,10 @@ fun RegisterContent(
         )
         Text(
             modifier = Modifier
-                .testTag(TestTags.FORGET_PASSWORD_TEXT_ID),
+                .testTag(TestTags.FORGET_PASSWORD_TEXT_ID)
+                .clickable {
+                    onForgetPasswordClick()
+                },
             text = stringResource(id = R.string.forget_password),
             onForgetPasswordClick
         )
@@ -58,5 +62,5 @@ fun RegisterContent(
 @Preview
 @Composable
 fun ShowRegisterPageView() {
-    RegisterContent("email", false, {}, {},{})
+    RegisterContent("email", false, {}, {}, {})
 }
