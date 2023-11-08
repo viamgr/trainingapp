@@ -59,10 +59,10 @@ android {
 
     flavorDimensions.add("type")
     productFlavors {
-        create("Api") {
+        create("api") {
         }
 
-        create("Mock") {
+        create("mock") {
         }
     }
 
