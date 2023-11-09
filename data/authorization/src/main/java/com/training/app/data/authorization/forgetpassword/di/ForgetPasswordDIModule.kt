@@ -11,7 +11,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ForgetPasswordDIModule {
+internal class ForgetPasswordDIModule {
 
     @Provides
     fun provideDataProvider(): ForgetPasswordDataProvider {
