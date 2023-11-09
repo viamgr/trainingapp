@@ -33,13 +33,13 @@ android {
 
     flavorDimensions.add("type")
     productFlavors {
-        create("Api") {
+        create("api") {
             namespace = "com.training.app.data.authorization"
             dimension = "type"
             buildConfigField("boolean", "IS_MOCKED", false.toString())
         }
 
-        create("Mock") {
+        create("mock") {
             namespace = "com.training.app.data.authorization"
             dimension = "type"
             buildConfigField("boolean", "IS_MOCKED", true.toString())
