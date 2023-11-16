@@ -6,7 +6,7 @@ import org.junit.Before
 import org.junit.Test
 
 
-class ForgetPasswordDataProviderImplTest {
+internal class ForgetPasswordDataProviderImplTest {
 
     private lateinit var dataProvider: ForgetPasswordDataProvider
 
