@@ -56,31 +56,42 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.3"
     }
+
+    flavorDimensions.add("type")
+    productFlavors {
+        create("api") {
+        }
+
+        create("mock") {
+        }
+    }
+
 }
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
-    implementation("androidx.activity:activity-compose:1.7.2")
-    implementation("androidx.compose.material3:material3:1.1.1")
-    debugImplementation("androidx.compose.ui:ui-tooling:1.5.1")
-    implementation("androidx.compose.ui:ui:1.5.1")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.1")
-    implementation("androidx.compose.ui:ui-graphics:1.5.1")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation("androidx.test.ext:junit-ktx:1.1.5")
+    implementation(platform(libs.kotlin.bom))
 
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.1")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.0-alpha05")
-    implementation("androidx.test.ext:junit-ktx:1.1.5")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.0")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.0-alpha05")
+    implementation(libs.compose.ui)
+    implementation(libs.compose.activity)
+    implementation(libs.material3)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.ui.graphics)
 
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 
-    implementation(project(":domain"))
+    implementation(libs.test.ktx)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.test.espresso)
+    androidTestImplementation(libs.test.ktx)
+    androidTestImplementation(libs.compose.ui.test)
+
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+
+    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":data:authorization")))
 
 }
 
