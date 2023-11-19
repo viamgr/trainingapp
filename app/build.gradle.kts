@@ -1,3 +1,5 @@
+import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.include
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -92,6 +94,12 @@ dependencies {
 
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data:authorization")))
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    androidTestImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+
+    implementation("org.mockito:mockito-core:3.4.6")
+    testImplementation ("org.mockito:mockito-core:3.4.6")
 
 }
 

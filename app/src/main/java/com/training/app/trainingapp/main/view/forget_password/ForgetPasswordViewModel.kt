@@ -50,7 +50,7 @@ class ForgetPasswordViewModel @Inject constructor(private val forgetPasswordUseC
         }
     }
 
-    private fun sendEmailForPasswordRecovery() {
+     fun sendEmailForPasswordRecovery() {
         viewModelScope.launch {
             forgetPasswordUseCase.invoke(_state.value.email).let {
                 _state.value.copy(emailValidateState = it.isSuccess)
