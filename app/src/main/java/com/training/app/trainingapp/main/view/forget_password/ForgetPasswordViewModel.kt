@@ -1,5 +1,6 @@
 package com.training.app.trainingapp.main.view.forget_password
 
+import android.util.Log
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,17 +32,21 @@ class ForgetPasswordViewModel @Inject constructor(private val forgetPasswordUseC
             ForgetPasswordEvent.OnSubmitButtonClicked -> {
                 onSubmitButtonClicked()
             }
+
+            else -> {}
         }
     }
 
     fun validateEmail() {
-        _state.value.copy(
-            emailValidateState = PatternsCompat.EMAIL_ADDRESS.matcher(_state.value.email).matches()
-        )
+        _state.update { mState ->
+            mState.copy(emailValidateState = PatternsCompat.EMAIL_ADDRESS.matcher(_state.value.email).matches())
+        }
     }
 
     fun onEmailChanged(email: String) {
-        _state.value.copy(email = email)
+        _state.update { mState ->
+            mState.copy(email = email)
+        }
     }
 
     fun onSubmitButtonClicked() {
@@ -52,8 +58,11 @@ class ForgetPasswordViewModel @Inject constructor(private val forgetPasswordUseC
 
      fun sendEmailForPasswordRecovery() {
         viewModelScope.launch {
+          //  Log.d("ForgetPass", "sendEmailForPasswordRecovery: " )
             forgetPasswordUseCase.invoke(_state.value.email).let {
-                _state.value.copy(emailValidateState = it.isSuccess)
+                _state.update { mState ->
+                    mState.copy(forgetPasswordResponse = it.isSuccess, isDisplayedSnackbar = true)
+                }
                 _efectFlow.emit(
                     ForgetPasswordEffect.ShowSnackbar(
                         message = "Forget Password Response:" + it.isSuccess
