@@ -98,8 +98,10 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
     androidTestImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
 
-    implementation("org.mockito:mockito-core:3.4.6")
-    testImplementation ("org.mockito:mockito-core:3.4.6")
+    /*implementation("org.mockito:mockito-core:3.4.6")
+    testImplementation ("org.mockito:mockito-core:3.4.6")*/
+    implementation("io.mockk:mockk:1.9.3")
+    testImplementation ("io.mockk:mockk:1.9.3")
 
 }
 
