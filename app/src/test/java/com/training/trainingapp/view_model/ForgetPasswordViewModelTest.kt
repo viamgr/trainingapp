@@ -79,7 +79,7 @@ class ForgetPasswordViewModelTest {
         viewModel.validateEmail()
         viewModel.sendEmailForPasswordRecovery()
 
-        verify(forgetPasswordUseCase, Mockito.times(1))
+        verify(forgetPasswordUseCase, Mockito.times(1)).invoke(any())
     }
 
     @Test
