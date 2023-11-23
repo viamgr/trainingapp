@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view
+package com.training.app.trainingapp.main.view.register
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
