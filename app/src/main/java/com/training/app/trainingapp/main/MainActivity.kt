@@ -29,15 +29,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
                 val pageState = registerViewModel.pageState.collectAsState().value
-                if (pageState.pageState != PageState.loading) {
+                if (pageState.pageState != PageState.LOADING) {
                     RegisterPageView(pageState.email,
-                        pageState.emailValidate,
-                        onEmailChanged = {
-                            registerViewModel.onEmailChanged(it)
-                        },
-                        onSubmitButtonClick = {
-                            registerViewModel.onSubmitButtonClicked()
-                        })
+                                     pageState.emailValidate,
+                                     onEmailChanged = {
+                                         registerViewModel.onEmailChanged(it)
+                                     },
+                                     onSubmitButtonClick = {
+                                         registerViewModel.onSubmitButtonClicked()
+                                     })
                 } else {
                     CircularProgressIndicator(modifier = Modifier.requiredSize(48.dp, 48.dp))
                 }

@@ -1,10 +1,10 @@
 package com.training.app.trainingapp.main.view_model
 
-import androidx.core.util.PatternsCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.training.app.trainingapp.main.state.base.PageState
 import com.training.app.trainingapp.main.state.register.RegisterPageState
+import com.training.app.trainingapp.utils.RegexChecker
 import com.trainning.app.domain.usecase.RegisterViewUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,12 +16,12 @@ import javax.inject.Inject
 @HiltViewModel
 class RegisterViewModel @Inject constructor(private val registerViewUseCase: RegisterViewUseCase) : ViewModel() {
 
-    private val _pageState = MutableStateFlow(RegisterPageState(PageState.idle, "", "", true))
+    private val _pageState = MutableStateFlow(RegisterPageState(PageState.IDLE, "", "", true))
     val pageState: StateFlow<RegisterPageState> = _pageState
 
 
-    fun validateEmail() {
-        _pageState.update { _pageState.value.copy(emailValidate = PatternsCompat.EMAIL_ADDRESS.matcher(_pageState.value.email).matches()) }
+    private fun validateEmail() {
+        _pageState.update { _pageState.value.copy(emailValidate = RegexChecker.isEmailCorrect(_pageState.value.email)) }
     }
 
     fun onEmailChanged(email: String) {
@@ -37,10 +37,10 @@ class RegisterViewModel @Inject constructor(private val registerViewUseCase: Reg
 
     private fun registerEmail(email: String) {
         viewModelScope.launch {
-            _pageState.update { (_pageState.value.copy(pageState = PageState.loading)) }
+            _pageState.update { (_pageState.value.copy(pageState = PageState.LOADING)) }
 
             val response = registerViewUseCase.invoke(email = email)
-            val pageState = if (response.isSuccess) PageState.success else PageState.failed
+            val pageState = if (response.isSuccess) PageState.SUCCESS else PageState.FAILED
 
             _pageState.update { _pageState.value.copy(pageState = pageState) }
         }

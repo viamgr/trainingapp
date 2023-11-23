@@ -19,22 +19,18 @@ import com.training.app.trainingapp.widgets.textFileds.EmailTextFiledView
 
 @Composable
 fun RegisterPageView(
-    userEmail: String, emailValidateState: Boolean, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit
+        userEmail: String,
+        emailValidateState: Boolean,
+        onEmailChanged: (newEmail: String) -> Unit,
+        onSubmitButtonClick: () -> Unit
 ) {
-    Column(
-        Modifier.padding(all = 16.dp),
-        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        EmailTextFiledView(
-            Modifier
-                .fillMaxWidth()
-                .testTag(TestTags.EMAIL_TEXT_FILED_ID), userEmail, emailValidateState, onEmailChanged
-        )
-        RoundButtonView(
-            Modifier
-                .fillMaxWidth()
-                .testTag(TestTags.CHECK_BUTTON_ID), stringResource(id = R.string.check), onSubmitButtonClick
-        )
+    Column(Modifier.padding(all = 16.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        EmailTextFiledView(Modifier
+                               .fillMaxWidth()
+                               .testTag(TestTags.EMAIL_TEXT_FILED_ID), userEmail, emailValidateState, onEmailChanged)
+        RoundButtonView(Modifier
+                            .fillMaxWidth()
+                            .testTag(TestTags.CHECK_BUTTON_ID), stringResource(id = R.string.check), onSubmitButtonClick)
     }
 }
 
