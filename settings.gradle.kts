@@ -1,5 +1,3 @@
-import java.net.URI
-
 pluginManagement {
     repositories {
         google()
@@ -22,7 +20,7 @@ dependencyResolutionManagement {
             version("hilt", "2.48")
             version("material3", "1.1.2")
             version("kotlinBom", "1.8.0")
-            version("kotlinCoroutines", "1.6.1")
+            version("kotlinCoroutines", "1.7.3")
             version("junitKtx", "1.1.5")
             version("junit", "4.13.2")
             version("test-espresso", "3.5.1")
@@ -36,8 +34,12 @@ dependencyResolutionManagement {
             library("compose-ui-test-manifest", "androidx.compose.ui", "ui-test-manifest").versionRef("compose")
             library("compose-activity", "androidx.activity", "activity-compose").versionRef("compose-activity")
 
-            bundle("compose", listOf("compose-ui", "compose-ui-tooling", "compose-ui-tooling-preview" , "compose-ui-graphics" , "compose-ui-test",
-                "compose-ui-test-manifest","compose-activity"))
+            bundle(
+                "compose", listOf(
+                    "compose-ui", "compose-ui-tooling", "compose-ui-tooling-preview", "compose-ui-graphics", "compose-ui-test",
+                    "compose-ui-test-manifest", "compose-activity"
+                )
+            )
 
             library("hilt", "com.google.dagger", "hilt-android").versionRef("hilt")
             library("hilt-compiler", "com.google.dagger", "hilt-android-compiler").versionRef("hilt")
@@ -52,8 +54,9 @@ dependencyResolutionManagement {
             bundle("kotlin", listOf("kotlin-bom", "kotlin-coroutines"))
 
             library("test-ktx", "androidx.test.ext", "junit-ktx").versionRef("junitKtx")
+            library("test-coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("kotlinCoroutines")
             library("test-espresso", "androidx.test.espresso", "espresso-core").versionRef("test-espresso")
-            bundle("test", listOf("test-ktx", "test-espresso"))
+            bundle("test", listOf("test-ktx", "test-espresso", "test-coroutines"))
 
         }
     }
