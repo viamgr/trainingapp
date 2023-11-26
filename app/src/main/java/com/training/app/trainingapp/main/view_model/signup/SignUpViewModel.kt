@@ -1,11 +1,11 @@
-package com.training.app.trainingapp.main.view_model
+package com.training.app.trainingapp.main.view_model.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.training.app.trainingapp.main.state.base.PageState
-import com.training.app.trainingapp.main.state.register.RegisterPageState
+import com.training.app.trainingapp.main.state.signup.SignUpPageState
 import com.training.app.trainingapp.utils.RegexChecker
-import com.trainning.app.domain.usecase.RegisterViewUseCase
+import com.trainning.app.domain.usecase.SignUpViewUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,10 +14,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val registerViewUseCase: RegisterViewUseCase) : ViewModel() {
+class SignUpViewModel @Inject constructor(private val registerViewUseCase: SignUpViewUseCase) : ViewModel() {
 
-    private val _pageState = MutableStateFlow(RegisterPageState(PageState.IDLE, "", "", true))
-    val pageState: StateFlow<RegisterPageState> = _pageState
+    private val _pageState = MutableStateFlow(SignUpPageState(PageState.IDLE, "", "", true))
+    val pageState: StateFlow<SignUpPageState> = _pageState
 
 
     private fun validateEmail() {

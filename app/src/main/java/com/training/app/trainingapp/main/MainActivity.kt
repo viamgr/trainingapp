@@ -13,14 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.training.app.trainingapp.main.state.base.PageState
-import com.training.app.trainingapp.main.view.register.RegisterPageView
-import com.training.app.trainingapp.main.view_model.RegisterViewModel
+import com.training.app.trainingapp.main.view.signup.SignUpPageView
+import com.training.app.trainingapp.main.view_model.signup.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val registerViewModel: RegisterViewModel by viewModels()
+    private val signUpViewModel: SignUpViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,16 +28,16 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-                val pageState = registerViewModel.pageState.collectAsState().value
+                val pageState = signUpViewModel.pageState.collectAsState().value
                 if (pageState.pageState != PageState.LOADING) {
-                    RegisterPageView(pageState.email,
-                                     pageState.emailValidate,
-                                     onEmailChanged = {
-                                         registerViewModel.onEmailChanged(it)
-                                     },
-                                     onSubmitButtonClick = {
-                                         registerViewModel.onSubmitButtonClicked()
-                                     })
+                    SignUpPageView(pageState.email,
+                                   pageState.emailValidate,
+                                   onEmailChanged = {
+                                       signUpViewModel.onEmailChanged(it)
+                                   },
+                                   onSubmitButtonClick = {
+                                       signUpViewModel.onSubmitButtonClicked()
+                                   })
                 } else {
                     CircularProgressIndicator(modifier = Modifier.requiredSize(48.dp, 48.dp))
                 }

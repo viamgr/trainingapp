@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view.register
+package com.training.app.trainingapp.main.view.signup
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,7 +18,7 @@ import com.training.app.trainingapp.widgets.textFileds.EmailTextFiledView
 
 
 @Composable
-fun RegisterPageView(
+fun SignUpPageView(
         userEmail: String,
         emailValidateState: Boolean,
         onEmailChanged: (newEmail: String) -> Unit,
@@ -38,5 +38,5 @@ fun RegisterPageView(
 @Preview
 @Composable
 fun ShowRegisterPageView() {
-    RegisterPageView("email", false, {}, {})
+    SignUpPageView("email", false, {}, {})
 }

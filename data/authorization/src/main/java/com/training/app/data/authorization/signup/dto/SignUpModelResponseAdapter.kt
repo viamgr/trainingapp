@@ -1,11 +1,11 @@
 package com.training.app.data.authorization.signup.dto
 
-import com.trainning.app.domain.model.RegisterResponse
+import com.trainning.app.domain.model.SignUpResponse
 
-internal class SignUpModelResponseAdapter constructor(val modelResponse: SignUpModelResponse) {
+internal class SignUpModelResponseAdapter constructor(private val modelResponse: SignUpModelResponse) {
 
-    fun map(): RegisterResponse {
-        return RegisterResponse(modelResponse.isSuccess)
+    fun map(): SignUpResponse {
+        return SignUpResponse(modelResponse.isSuccess)
     }
 
 }
