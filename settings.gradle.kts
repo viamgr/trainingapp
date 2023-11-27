@@ -24,6 +24,7 @@ dependencyResolutionManagement {
             version("junitKtx", "1.1.5")
             version("junit", "4.13.2")
             version("test-espresso", "3.5.1")
+            version("test-mockk", "1.13.8")
 
 
             library("compose-ui", "androidx.compose.ui", "ui").versionRef("compose")
@@ -35,10 +36,10 @@ dependencyResolutionManagement {
             library("compose-activity", "androidx.activity", "activity-compose").versionRef("compose-activity")
 
             bundle(
-                "compose", listOf(
+                    "compose", listOf(
                     "compose-ui", "compose-ui-tooling", "compose-ui-tooling-preview", "compose-ui-graphics", "compose-ui-test",
                     "compose-ui-test-manifest", "compose-activity"
-                )
+            )
             )
 
             library("hilt", "com.google.dagger", "hilt-android").versionRef("hilt")
@@ -56,7 +57,8 @@ dependencyResolutionManagement {
             library("test-ktx", "androidx.test.ext", "junit-ktx").versionRef("junitKtx")
             library("test-coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("kotlinCoroutines")
             library("test-espresso", "androidx.test.espresso", "espresso-core").versionRef("test-espresso")
-            bundle("test", listOf("test-ktx", "test-espresso", "test-coroutines"))
+            library("test-mockk", "io.mockk", "mockk").versionRef("test-mockk")
+            bundle("test", listOf("test-ktx", "test-espresso", "test-coroutines", "test-mockk"))
 
         }
     }
