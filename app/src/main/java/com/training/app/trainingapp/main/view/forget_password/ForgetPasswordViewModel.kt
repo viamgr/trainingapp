@@ -1,6 +1,5 @@
 package com.training.app.trainingapp.main.view.forget_password
 
-import android.util.Log
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,7 +19,7 @@ class ForgetPasswordViewModel @Inject constructor(private val forgetPasswordUseC
     private val _state = MutableStateFlow(ForgetPasswordState())
     val state: StateFlow<ForgetPasswordState> = _state.asStateFlow()
 
-    private val _efectFlow = MutableSharedFlow<ForgetPasswordEffect>()
+    private val _efectFlow = MutableSharedFlow<ForgetPasswordEffect>(1)
     val efectFlow = _efectFlow.asSharedFlow()
 
     fun onEvent(event: ForgetPasswordEvent) {
@@ -35,36 +34,38 @@ class ForgetPasswordViewModel @Inject constructor(private val forgetPasswordUseC
         }
     }
 
-    fun validateEmail() {
+    private fun validateEmail() {
         _state.update { mState ->
-            mState.copy(emailValidateState = PatternsCompat.EMAIL_ADDRESS.matcher(_state.value.email).matches())
+            mState.copy(
+                emailValidateState = PatternsCompat.EMAIL_ADDRESS.matcher(_state.value.email)
+                    .matches()
+            )
         }
     }
 
-    fun onEmailChanged(email: String) {
+    private fun onEmailChanged(email: String) {
         _state.update { mState ->
             mState.copy(email = email)
         }
+        validateEmail()
     }
 
-    fun onSubmitButtonClicked() {
+    private fun onSubmitButtonClicked() {
         validateEmail()
         if (_state.value.emailValidateState) {
             sendEmailForPasswordRecovery()
         }
     }
 
-     fun sendEmailForPasswordRecovery() {
+    private fun sendEmailForPasswordRecovery() {
         viewModelScope.launch {
-          //  Log.d("ForgetPass", "sendEmailForPasswordRecovery: " )
-
             forgetPasswordUseCase.invoke(_state.value.email).let {
                 _state.update { mState ->
                     mState.copy(forgetPasswordResponse = it.isSuccess, isDisplayedSnackbar = true)
                 }
                 _efectFlow.tryEmit(
                     ForgetPasswordEffect.ShowSnackbar(
-                        message = "Forget Password Response:" + it.isSuccess
+                        message = "${it.isSuccess}"
                     )
                 )
             }

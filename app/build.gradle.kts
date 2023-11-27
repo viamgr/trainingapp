@@ -92,17 +92,13 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
+    implementation (libs.kotlin.test)
+    androidTestImplementation (libs.kotlin.test)
+
+    testImplementation (libs.mockk)
+
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data:authorization")))
-
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
-    androidTestImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
-
-    /*implementation("org.mockito:mockito-core:3.4.6")
-    testImplementation ("org.mockito:mockito-core:3.4.6")*/
-    implementation("io.mockk:mockk:1.9.3")
-    testImplementation ("io.mockk:mockk:1.9.3")
-
 }
 
 kapt {

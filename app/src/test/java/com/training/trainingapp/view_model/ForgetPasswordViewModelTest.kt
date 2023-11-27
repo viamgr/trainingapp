@@ -1,6 +1,7 @@
 package com.training.trainingapp.view_model
 
 import com.training.app.trainingapp.main.view.forget_password.ForgetPasswordEffect
+import com.training.app.trainingapp.main.view.forget_password.ForgetPasswordEvent
 import com.training.app.trainingapp.main.view.forget_password.ForgetPasswordViewModel
 import com.trainning.app.domain.model.ForgetPasswordResponse
 import com.trainning.app.domain.repository.ForgetPasswordRepository
@@ -10,10 +11,8 @@ import io.mockk.coEvery
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.spyk
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.setMain
-import org.junit.After
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
@@ -31,8 +30,6 @@ class ForgetPasswordViewModelTest {
     @InjectMockKs
     private lateinit var viewModel: ForgetPasswordViewModel
 
-    private val testDispatcher = UnconfinedTestDispatcher()
-
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
@@ -43,75 +40,58 @@ class ForgetPasswordViewModelTest {
         }
         forgetPasswordUseCase = spyk(ForgetPasswordUseCase(forgetPasswordRepository))
         viewModel = spyk(ForgetPasswordViewModel(forgetPasswordUseCase))
-        Dispatchers.setMain(testDispatcher)
     }
 
     @Test
     fun onEmailChanged_should_update_email_in_state() {
         val email = "test@example.com"
-        viewModel.onEmailChanged(email)
+        viewModel.onEvent(ForgetPasswordEvent.OnEmailChanged(email))
         assertEquals(email, viewModel.state.value.email)
     }
 
     @Test
     fun validateEmail_should_update_email_validation_state_in_state() {
-        viewModel.onEmailChanged("test@example.com")
-        viewModel.validateEmail()
+        val email = "test@example.com"
+        viewModel.onEvent(ForgetPasswordEvent.OnEmailChanged(email))
         assertEquals(true, viewModel.state.value.emailValidateState)
     }
 
     @Test
-    fun onSubmitButtonClicked_should_call_sendEmailForPasswordRecovery_when_email_is_valid() {
-        viewModel.onEmailChanged("paria.m616@gmail.com")
-        viewModel.validateEmail()
-        viewModel.onSubmitButtonClicked()
-        // viewModel.sendEmailForPasswordRecovery()
-        testDispatcher.scheduler.advanceUntilIdle()
+    fun onSubmitButtonClicked_should_call_sendEmailForPasswordRecovery_when_email_is_valid() = runTest{
+        val email = "paria.m7616@gmail.com"
+        viewModel.onEvent(ForgetPasswordEvent.OnEmailChanged(email))
+        viewModel.onEvent(ForgetPasswordEvent.OnSubmitButtonClicked)
         assertTrue(viewModel.state.value.isDisplayedSnackbar)
     }
 
     @Test
-    fun sendEmailForPasswordRecovery_should_emit_effect() {
+    fun sendEmailForPasswordRecovery_should_emit_effect() = runTest{
         val email = "paria.m7616@gmail.com"
         val successResponse = ForgetPasswordResponse(true)
         coEvery {
             forgetPasswordUseCase.invoke(email)
         } returns successResponse
-        viewModel.onEmailChanged(email)
-        viewModel.validateEmail()
-        viewModel.sendEmailForPasswordRecovery()
-        testDispatcher.scheduler.advanceUntilIdle()
-        val effect = viewModel.efectFlow.replayCache.first()
+        viewModel.onEvent(ForgetPasswordEvent.OnEmailChanged(email))
+        viewModel.onEvent(ForgetPasswordEvent.OnSubmitButtonClicked)
+        val effect = viewModel.efectFlow.first()
         assertTrue(effect is ForgetPasswordEffect.ShowSnackbar)
     }
 
     @Test
-    fun sendEmailForPasswordRecovery_should_update_state_and_emit_effect() {
-        // Given
+    fun sendEmailForPasswordRecovery_should_update_state_and_emit_effect()= runTest{
         val email = "paria.m7616@gmail.com"
-        viewModel.onEmailChanged(email)
-        viewModel.validateEmail()
-        val successResponse = ForgetPasswordResponse(true)
-        coEvery { forgetPasswordUseCase.invoke(any()) } returns successResponse
-        viewModel.sendEmailForPasswordRecovery()
-        testDispatcher.scheduler.advanceUntilIdle()
-        assertTrue(viewModel.state.value.forgetPasswordResponse)
-        assertTrue(viewModel.state.value.isDisplayedSnackbar)
+        viewModel.onEvent(ForgetPasswordEvent.OnEmailChanged(email))
+        viewModel.onEvent(ForgetPasswordEvent.OnSubmitButtonClicked)
+        assertTrue( viewModel.state.value.forgetPasswordResponse)
 
-        val effectList = viewModel.efectFlow.replayCache
-        assertTrue(effectList.isNotEmpty())
+        val showSnackBarEffect = viewModel.efectFlow.first()
+        assertNotNull(showSnackBarEffect)
+        assertTrue( showSnackBarEffect is ForgetPasswordEffect.ShowSnackbar)
 
-        val effect = effectList.firstOrNull()
-        assertNotNull(effect)
-        assertTrue(effect is ForgetPasswordEffect.ShowSnackbar)
+        val response = viewModel.state.value.forgetPasswordResponse
         assertEquals(
-            "Forget Password Response:${successResponse}",
-            (effect as ForgetPasswordEffect.ShowSnackbar).message
+            "$response",
+            (showSnackBarEffect as ForgetPasswordEffect.ShowSnackbar).message
         )
-    }
-
-    @After
-    fun close() {
-        Dispatchers.shutdown()
     }
 }
