@@ -1,5 +1,3 @@
-import java.net.URI
-
 pluginManagement {
     repositories {
         google()
@@ -26,7 +24,7 @@ dependencyResolutionManagement {
             version("junitKtx", "1.1.5")
             version("junit", "4.13.2")
             version("test-espresso", "3.5.1")
-            version("mockk", "1.9.3")
+            version("mockk", "1.12.0")
 
 
             library("compose-ui", "androidx.compose.ui", "ui").versionRef("compose")

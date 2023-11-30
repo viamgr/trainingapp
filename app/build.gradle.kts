@@ -1,5 +1,3 @@
-import org.gradle.internal.impldep.org.junit.experimental.categories.Categories.CategoryFilter.include
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -92,13 +90,15 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-    implementation (libs.kotlin.test)
-    androidTestImplementation (libs.kotlin.test)
+    implementation(libs.kotlin.test)
+    androidTestImplementation(libs.kotlin.test)
 
-    testImplementation (libs.mockk)
+    testImplementation(libs.mockk)
 
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data:authorization")))
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 }
 
 kapt {
