@@ -94,11 +94,13 @@ dependencies {
     androidTestImplementation(libs.kotlin.test)
 
     testImplementation(libs.mockk)
+    
+    testImplementation(libs.jupiter)
+    testRuntimeOnly(libs.jupiter.engine)
 
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data:authorization")))
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+
 }
 
 kapt {

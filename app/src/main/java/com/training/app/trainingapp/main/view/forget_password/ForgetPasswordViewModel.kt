@@ -59,13 +59,13 @@ class ForgetPasswordViewModel @Inject constructor(private val forgetPasswordUseC
 
     private fun sendEmailForPasswordRecovery() {
         viewModelScope.launch {
-            forgetPasswordUseCase.invoke(_state.value.email).let {
+            forgetPasswordUseCase.invoke(_state.value.email).also {
                 _state.update { mState ->
                     mState.copy(forgetPasswordResponse = it.isSuccess, isDisplayedSnackbar = true)
                 }
                 _efectFlow.tryEmit(
                     ForgetPasswordEffect.ShowSnackbar(
-                        message = "${it.isSuccess}"
+                        message = it.isSuccess
                     )
                 )
             }

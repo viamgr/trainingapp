@@ -24,7 +24,8 @@ dependencyResolutionManagement {
             version("junitKtx", "1.1.5")
             version("junit", "4.13.2")
             version("test-espresso", "3.5.1")
-            version("mockk", "1.12.0")
+            version("mockk", "1.13.8")
+            version("jupiter", "5.8.2")
 
 
             library("compose-ui", "androidx.compose.ui", "ui").versionRef("compose")
@@ -101,6 +102,18 @@ dependencyResolutionManagement {
             bundle("test", listOf("test-ktx", "test-espresso"))
 
             library("mockk", "io.mockk", "mockk").versionRef("mockk")
+
+            library(
+                "jupiter",
+                "org.junit.jupiter",
+                "junit-jupiter-api"
+            ).versionRef("jupiter")
+            library(
+                "jupiter-engine",
+                "org.junit.jupiter",
+                "junit-jupiter-engine"
+            ).versionRef("jupiter")
+            bundle("test", listOf("jupiter", "jupiter-engine"))
 
         }
     }
