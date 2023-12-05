@@ -63,9 +63,10 @@ class ForgetPasswordViewModel @Inject constructor(private val forgetPasswordUseC
                 _state.update { mState ->
                     mState.copy(forgetPasswordResponse = it.isSuccess, isDisplayedSnackbar = true)
                 }
+                val message = if(it.isSuccess) "success" else "failed"
                 _efectFlow.tryEmit(
                     ForgetPasswordEffect.ShowSnackbar(
-                        message = it.isSuccess
+                        message = message
                     )
                 )
             }

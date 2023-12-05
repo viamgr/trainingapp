@@ -17,7 +17,7 @@ fun ForgetPasswordScreen(viewModel: ForgetPasswordViewModel) {
         viewModel.efectFlow.collectLatest { event ->
             when (event) {
                 is ForgetPasswordEffect.ShowSnackbar -> {
-                    Toast.makeText(context, event.message.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, event.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
