@@ -25,6 +25,7 @@ dependencyResolutionManagement {
             version("junit", "4.13.2")
             version("test-espresso", "3.5.1")
             version("test-mockk", "1.13.8")
+            version("turbine", "1.0.0")
 
 
             library("compose-ui", "androidx.compose.ui", "ui").versionRef("compose")
@@ -58,7 +59,8 @@ dependencyResolutionManagement {
             library("test-coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("kotlinCoroutines")
             library("test-espresso", "androidx.test.espresso", "espresso-core").versionRef("test-espresso")
             library("test-mockk", "io.mockk", "mockk").versionRef("test-mockk")
-            bundle("test", listOf("test-ktx", "test-espresso", "test-coroutines", "test-mockk"))
+            library("test-turbine", "app.cash.turbine", "turbine").versionRef("turbine")
+            bundle("test", listOf("test-ktx", "test-espresso", "test-coroutines", "test-mockk", "test-turbine"))
 
         }
     }

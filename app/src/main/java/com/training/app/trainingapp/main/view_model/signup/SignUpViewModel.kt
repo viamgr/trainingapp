@@ -36,9 +36,9 @@ class SignUpViewModel @Inject constructor(private val registerViewUseCase: SignU
     }
 
     private fun registerEmail(email: String) {
-        viewModelScope.launch {
-            _pageState.update { (_pageState.value.copy(pageState = PageState.LOADING)) }
+        _pageState.update { _pageState.value.copy(pageState = PageState.LOADING) }
 
+        viewModelScope.launch {
             val response = registerViewUseCase.invoke(email = email)
             val pageState = if (response.isSuccess) PageState.SUCCESS else PageState.FAILED
 
