@@ -34,7 +34,7 @@ class SignUpViewModelTest {
     }
 
     @Test
-    fun GivenEmail_WhenEmailChanged_ThenViewModelEmailMustBeChanged() {
+    fun givenEmail_WhenEmailChanged_ThenViewModelEmailMustBeChanged() {
         var email = "paria.m7616@gmial.com"
         sampleViewModel.onEmailChanged(email)
         assertEquals(sampleViewModel.pageState.value.email, email)
@@ -49,7 +49,7 @@ class SignUpViewModelTest {
     }
 
     @Test
-    fun GivenCorrectEmail_WhenEmailChangedAndSubmitClicked_ThenViewModelEmailValidateShouldBeTrue() {
+    fun givenCorrectEmail_WhenEmailChangedAndSubmitClicked_ThenViewModelEmailValidateShouldBeTrue() {
         coEvery { signUpViewUseCase.invoke(any()) } returns SignUpResponse(true)
 
         val email = "paria.m7616@gmial.com"
@@ -59,7 +59,7 @@ class SignUpViewModelTest {
     }
 
     @Test
-    fun GivenWrongEmail_WhenEmailChangedAndSubmitClicked_ThenViewModelEmailValidateShouldBeFalse() {
+    fun givenWrongEmail_WhenEmailChangedAndSubmitClicked_ThenViewModelEmailValidateShouldBeFalse() {
         val email = "paria."
         sampleViewModel.onEmailChanged(email)
         sampleViewModel.onSubmitButtonClicked()
@@ -67,7 +67,7 @@ class SignUpViewModelTest {
     }
 
     @Test
-    fun GivenEmptyEmail_WhenEmailChangedAndSubmitClicked_ThenValidationShouldBeFalse() {
+    fun givenEmptyEmail_WhenEmailChangedAndSubmitClicked_ThenValidationShouldBeFalse() {
         val email = ""
         sampleViewModel.onEmailChanged(email)
         sampleViewModel.onSubmitButtonClicked()
@@ -111,7 +111,7 @@ class SignUpViewModelTest {
             assertEquals(PageState.FAILED, awaitItem().pageState)
         }
     }
-    
+
 
     @After
     fun close() {
