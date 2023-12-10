@@ -26,6 +26,7 @@ dependencyResolutionManagement {
             version("junitKtx", "1.1.5")
             version("junit", "4.13.2")
             version("test-espresso", "3.5.1")
+            version("navigation", "2.7.5")
 
 
             library("compose-ui", "androidx.compose.ui", "ui").versionRef("compose")
@@ -55,6 +56,9 @@ dependencyResolutionManagement {
             library("test-espresso", "androidx.test.espresso", "espresso-core").versionRef("test-espresso")
             bundle("test", listOf("test-ktx", "test-espresso"))
 
+            library("navigation", "androidx.navigation", "navigation-compose").versionRef("navigation")
+            library("navigation-test", "androidx.navigation", "navigation-testing").versionRef("navigation")
+            bundle("navigation", listOf("navigation", "navigation-test"))
         }
     }
 }
