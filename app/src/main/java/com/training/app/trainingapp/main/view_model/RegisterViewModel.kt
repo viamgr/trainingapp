@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(): ViewModel() {
+class RegisterViewModel @Inject constructor() : ViewModel() {
 
     private val _userEmail = MutableStateFlow("")
     val userEmail: StateFlow<String> = _userEmail
