@@ -10,8 +10,8 @@ import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.yield
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -79,7 +79,7 @@ class SignUpViewModelTest {
     @Test
     fun givenCorrectEmail_WhenEmailChangedAndSubmitClicked_ThenPageStateMustBeSuccess() = runTest {
         coEvery { signUpViewUseCase.invoke(any()) } coAnswers {
-            delay(10)
+            yield()
             SignUpResponse(true)
         }
         val email = "paria.m7616@gmial.com"
@@ -98,7 +98,7 @@ class SignUpViewModelTest {
     @Test
     fun givenCorrectEmail_WhenEmailChangedAndSubmitClicked_ThenPageStateMustBeFailed() = runTest {
         coEvery { signUpViewUseCase.invoke(any()) } coAnswers {
-            delay(10)
+            yield()
             SignUpResponse(false)
         }
         val email = "paria.m7616@gmial.com"
