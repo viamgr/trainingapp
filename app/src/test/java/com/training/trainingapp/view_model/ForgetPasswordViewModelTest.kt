@@ -42,7 +42,7 @@ class ForgetPasswordViewModelTest {
     }
 
     @Test
-    fun GivenEmail_WhenEmailChanged_ThenEmailStateShouldBeUpdate() = runTest {
+    fun givenEmail_WhenEmailChanged_ThenEmailStateShouldBeUpdate() = runTest {
         val email = "test@example.com"
         forgetPasswordUseCase = mockk(relaxed = true) {
             coEvery {
@@ -55,21 +55,21 @@ class ForgetPasswordViewModelTest {
     }
 
     @Test
-    fun GivenCorrectEmail_WhenEmailChanged_ThenValidationShouldBeTrue() {
+    fun givenCorrectEmail_WhenEmailChanged_ThenValidationShouldBeTrue() {
         val email = "test@example.com"
         viewModel.onEvent(ForgetPasswordEvent.OnEmailChanged(email))
         assertTrue(viewModel.state.value.emailValidateState)
     }
 
     @Test
-    fun GivenWrongEmail_WhenEmailChanged_ThenValidationShouldBeFalse() {
+    fun givenWrongEmail_WhenEmailChanged_ThenValidationShouldBeFalse() {
         val email = "testexample.com"
         viewModel.onEvent(ForgetPasswordEvent.OnEmailChanged(email))
         assertFalse(viewModel.state.value.emailValidateState)
     }
 
     @Test
-    fun GivenCorrectEmail_WhenEmailChangedAndSubmitButtonClicked_ThenForgetPasswordStateIsTrue() =
+    fun givenCorrectEmail_WhenEmailChangedAndSubmitButtonClicked_ThenForgetPasswordStateIsTrue() =
         runTest {
             val email = "paria.m7616@gmail.com"
             forgetPasswordUseCase = mockk {
@@ -84,7 +84,7 @@ class ForgetPasswordViewModelTest {
         }
 
     @Test
-    fun GivenWrongEmail_WhenEmailChangedAndSubmitButtonClicked_ThenForgetPasswordStateIsFalse() =
+    fun givenWrongEmail_WhenEmailChangedAndSubmitButtonClicked_ThenForgetPasswordStateIsFalse() =
         runTest {
             val email = "paria.m7616gmail.com"
             forgetPasswordUseCase = mockk {
@@ -99,7 +99,7 @@ class ForgetPasswordViewModelTest {
         }
 
     @Test
-    fun GivenCorrectEmail_WhenEmailChangedAndSubmitButtonClicked_ThenSnackBarEffectShouldBeEmittWithTureMessage() =
+    fun givenCorrectEmail_WhenEmailChangedAndSubmitButtonClicked_ThenSnackBarEffectShouldBeEmittWithTureMessage() =
         runTest {
 
             val email = "paria.m7616@gmail.com"
@@ -124,7 +124,7 @@ class ForgetPasswordViewModelTest {
         }
 
     @Test
-    fun GivenCorrectEmail_WhenEmailChangedAndSubmitButtonClicked_ThenSnackBarStateShoudBeTrue() =
+    fun givenCorrectEmail_WhenEmailChangedAndSubmitButtonClicked_ThenSnackBarStateShoudBeTrue() =
         runTest {
             val email = "paria.m7616@gmail.com"
             forgetPasswordUseCase = mockk {
@@ -139,7 +139,7 @@ class ForgetPasswordViewModelTest {
             assertTrue(viewModel.state.value.isDisplayedSnackbar)
         }
     @Test
-    fun GivenWrongEmail_WhenEmailChangedAndSubmitButtonClicked_ThenSnackBarStateShoudBeFalse() =
+    fun givenWrongEmail_WhenEmailChangedAndSubmitButtonClicked_ThenSnackBarStateShoudBeFalse() =
         runTest {
             val email = "paria.m7616gmail.com"
             forgetPasswordUseCase = mockk {
@@ -155,7 +155,7 @@ class ForgetPasswordViewModelTest {
         }
 
     @Test
-    fun GivenCorrectEmail_WhenEmailChangedAndSubmitButtonClicked_ThenSnackBarMessageIsSuccess() =
+    fun givenCorrectEmail_WhenEmailChangedAndSubmitButtonClicked_ThenSnackBarMessageIsSuccess() =
         runTest {
             val email = "paria.m7616@gmail.com"
             forgetPasswordUseCase = mockk(relaxed = true) {
@@ -173,7 +173,7 @@ class ForgetPasswordViewModelTest {
         }
 
     @Test
-    fun GivenCorrectEmail_WhenEmailChangedAndSubmitButtonClickedAndForgetPasswordFailed_ThenSnackBarMessageIsFailed() =
+    fun givenCorrectEmail_WhenEmailChangedAndSubmitButtonClickedAndForgetPasswordFailed_ThenSnackBarMessageIsFailed() =
         runTest {
             val email = "paria.m7616@gmail.com"
             forgetPasswordUseCase = mockk(relaxed = true) {
