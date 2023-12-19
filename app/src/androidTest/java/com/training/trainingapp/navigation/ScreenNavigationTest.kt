@@ -32,19 +32,18 @@ class MainScreenNavigationTest {
     }
 
     @Test
-    fun mainNavHost_verifyStartDestination() {
+    fun mainNavHost_VerifyStartDestination() {
         navController.assertCurrentRouteName(Screen.Register.name)
     }
 
     @Test
-    fun mainNavHost_clickOnForgetPasswordText_navigatesToForgetPasswordScreen() {
-        composeTestRule.onNodeWithTag(TestTags.FORGET_PASSWORD_TEXT_ID)
-            .performClick()
+    fun mainNavHost_ClickOnForgetPasswordText_NavigatesToForgetPasswordScreen() {
+        navigateToForgetPasswordScreen()
         navController.assertCurrentRouteName(Screen.ForgetPassword.name)
     }
 
     @Test
-    fun mainNavHost_clickBackOnForgetPasswordScreen_navigatesToRegisterScreen() {
+    fun mainNavHost_ClickBackOnForgetPasswordScreen_NavigatesToRegisterScreen(){
         navigateToForgetPasswordScreen()
         performNavigateUp()
         navController.assertCurrentRouteName(Screen.Register.name)

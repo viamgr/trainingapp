@@ -26,7 +26,10 @@ fun MainApp(
             )
         }
         composable(Screen.ForgetPassword.name) {
-            ForgetPasswordScreen(viewModel = forgetPasswordViewModel)
+            ForgetPasswordScreen(
+                navController = navController,
+                viewModel = forgetPasswordViewModel
+            )
         }
     }
 }
