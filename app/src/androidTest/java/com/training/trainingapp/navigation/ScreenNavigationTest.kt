@@ -55,8 +55,8 @@ class MainScreenNavigationTest {
     }
 
     private fun performNavigateUp() {
-        composeTestRule.activityRule.scenario.onActivity { activity ->
-            activity.onBackPressedDispatcher.onBackPressed()
+        composeTestRule.runOnIdle {
+            navController.navigateUp()
         }
     }
 
