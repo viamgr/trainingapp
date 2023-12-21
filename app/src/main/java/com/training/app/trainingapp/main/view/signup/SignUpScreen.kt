@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view.register
+package com.training.app.trainingapp.main.view.signup
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
