@@ -33,6 +33,6 @@ fun SignUpScreen(navController:NavController, signUpViewModel:SignUpViewModel) {
 
 @Preview
 @Composable
-fun RegisterScreenPreview() {
+fun SignUpScreenPreview() {
     SignUpScreen(rememberNavController(), SignUpViewModel())
 }

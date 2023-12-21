@@ -61,6 +61,6 @@ fun SignUpContent(
 
 @Preview
 @Composable
-fun ShowRegisterPageView() {
+fun ShowSignUpContent() {
     SignUpContent("email", false, {}, {}, {})
 }
