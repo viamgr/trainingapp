@@ -7,22 +7,22 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.training.app.trainingapp.main.view.forget_password.ForgetPasswordScreen
-import com.training.app.trainingapp.main.view.register.RegisterScreen
+import com.training.app.trainingapp.main.view.register.SignUpScreen
 import com.training.app.trainingapp.main.view_model.ForgetPasswordViewModel
-import com.training.app.trainingapp.main.view_model.RegisterViewModel
+import com.training.app.trainingapp.main.view_model.SignUpViewModel
 import com.training.app.trainingapp.utils.Screen
 
 @Composable
 fun MainApp(
-    registerViewModel: RegisterViewModel = viewModel(),
+    signUpViewModel: SignUpViewModel = viewModel(),
     forgetPasswordViewModel: ForgetPasswordViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
     NavHost(navController, startDestination = Screen.Register.name) {
         composable(Screen.Register.name) {
-            RegisterScreen(
+            SignUpScreen(
                 navController = navController,
-                registerViewModel = registerViewModel
+                signUpViewModel = signUpViewModel
             )
         }
         composable(Screen.ForgetPassword.name) {

@@ -1,17 +1,17 @@
 package com.training.trainingapp.view_model
 
-import com.training.app.trainingapp.main.view_model.RegisterViewModel
+import com.training.app.trainingapp.main.view_model.SignUpViewModel
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
-class RegisterViewModelTest {
-    lateinit var sampleViewModel: RegisterViewModel
+class SignUpViewModelTest {
+    lateinit var sampleViewModel: SignUpViewModel
 
     @Before
     fun initValues() {
-        sampleViewModel = RegisterViewModel()
+        sampleViewModel = SignUpViewModel()
     }
 
     @Test

@@ -9,21 +9,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.training.app.trainingapp.main.view_model.RegisterViewModel
+import com.training.app.trainingapp.main.view_model.SignUpViewModel
 import com.training.app.trainingapp.utils.Screen
 
 @Composable
-fun RegisterScreen(navController:NavController ,registerViewModel:RegisterViewModel) {
+fun SignUpScreen(navController:NavController, signUpViewModel:SignUpViewModel) {
     Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-        val email = registerViewModel.userEmail.collectAsState().value
-        val emailStatus = registerViewModel.emailValidateState.collectAsState().value
-        RegisterContent(email,
+        val email = signUpViewModel.userEmail.collectAsState().value
+        val emailStatus = signUpViewModel.emailValidateState.collectAsState().value
+        SignUpContent(email,
             emailStatus,
             onEmailChanged = {
-                registerViewModel.onEmailChanged(it)
+                signUpViewModel.onEmailChanged(it)
             },
             onSubmitButtonClick = {
-                registerViewModel.onSubmitButtonClicked()
+                signUpViewModel.onSubmitButtonClicked()
             },
             onForgetPasswordClick = {
                 navController.navigate(Screen.ForgetPassword.name)
@@ -34,5 +34,5 @@ fun RegisterScreen(navController:NavController ,registerViewModel:RegisterViewMo
 @Preview
 @Composable
 fun RegisterScreenPreview() {
-    RegisterScreen(rememberNavController(), RegisterViewModel())
+    SignUpScreen(rememberNavController(), SignUpViewModel())
 }

@@ -20,7 +20,7 @@ import com.training.app.trainingapp.widgets.texts.Text
 
 
 @Composable
-fun RegisterContent(
+fun SignUpContent(
     userEmail: String,
     emailValidateState: Boolean,
     onEmailChanged: (newEmail: String) -> Unit,
@@ -62,5 +62,5 @@ fun RegisterContent(
 @Preview
 @Composable
 fun ShowRegisterPageView() {
-    RegisterContent("email", false, {}, {}, {})
+    SignUpContent("email", false, {}, {}, {})
 }

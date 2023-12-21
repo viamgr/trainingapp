@@ -4,13 +4,13 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.training.app.trainingapp.utils.TestTags
-import com.training.app.trainingapp.main.view.register.RegisterContent
+import com.training.app.trainingapp.main.view.register.SignUpContent
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class RegisterPageViewTest {
+class SignUpContentTest {
 
     @get: Rule
     val composeTestRule = createComposeRule()
@@ -19,7 +19,7 @@ class RegisterPageViewTest {
     fun givenView_WhenViewCreate_ThenShouldAllViewDisplayed() {
 
         composeTestRule.setContent {
-            RegisterContent("",
+            SignUpContent("",
                 false,
                 onEmailChanged = {
                 },
