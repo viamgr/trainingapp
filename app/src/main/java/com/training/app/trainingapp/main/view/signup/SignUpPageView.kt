@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view
+package com.training.app.trainingapp.main.view.signup
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,23 +18,19 @@ import com.training.app.trainingapp.widgets.textFileds.EmailTextFiledView
 
 
 @Composable
-fun RegisterPageView(
-    userEmail: String, emailValidateState: Boolean, onEmailChanged: (newEmail: String) -> Unit, onSubmitButtonClick: () -> Unit
+fun SignUpPageView(
+        userEmail: String,
+        emailValidateState: Boolean,
+        onEmailChanged: (newEmail: String) -> Unit,
+        onSubmitButtonClick: () -> Unit
 ) {
-    Column(
-        Modifier.padding(all = 16.dp),
-        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        EmailTextFiledView(
-            Modifier
-                .fillMaxWidth()
-                .testTag(TestTags.EMAIL_TEXT_FILED_ID), userEmail, emailValidateState, onEmailChanged
-        )
-        RoundButtonView(
-            Modifier
-                .fillMaxWidth()
-                .testTag(TestTags.CHECK_BUTTON_ID), stringResource(id = R.string.check), onSubmitButtonClick
-        )
+    Column(Modifier.padding(all = 16.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        EmailTextFiledView(Modifier
+                               .fillMaxWidth()
+                               .testTag(TestTags.EMAIL_TEXT_FILED_ID), userEmail, emailValidateState, onEmailChanged)
+        RoundButtonView(Modifier
+                            .fillMaxWidth()
+                            .testTag(TestTags.CHECK_BUTTON_ID), stringResource(id = R.string.check), onSubmitButtonClick)
     }
 }
 
@@ -42,5 +38,5 @@ fun RegisterPageView(
 @Preview
 @Composable
 fun ShowRegisterPageView() {
-    RegisterPageView("email", false, {}, {})
+    SignUpPageView("email", false, {}, {})
 }

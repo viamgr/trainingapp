@@ -9,11 +9,15 @@ import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
-fun RoundButtonView(modifier: Modifier, text: String, onSubmitButtonClick: () -> Unit) {
+fun RoundButtonView(
+        modifier: Modifier,
+        text: String,
+        onSubmitButtonClick: () -> Unit
+) {
     Button(modifier = modifier,
-        onClick = onSubmitButtonClick, content = {
-            Text(text)
-        })
+           onClick = onSubmitButtonClick, content = {
+        Text(text)
+    })
 }
 
 
