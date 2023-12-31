@@ -64,7 +64,10 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)
+    testImplementation(libs.test.coroutines)
+
     androidTestImplementation(libs.test.espresso)
+    androidTestImplementation(libs.test.coroutines)
     androidTestImplementation(libs.test.ktx)
 
 

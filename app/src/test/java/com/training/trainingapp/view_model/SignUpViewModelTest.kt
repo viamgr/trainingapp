@@ -1,82 +1,117 @@
 package com.training.trainingapp.view_model
 
-import com.training.app.trainingapp.main.view_model.SignUpViewModel
+import app.cash.turbine.test
+import com.training.app.trainingapp.main.state.base.PageState
+import com.training.app.trainingapp.main.view_model.signup.SignUpViewModel
+import com.training.trainingapp.MainCoroutineRule
+import com.trainning.app.domain.model.SignUpResponse
+import com.trainning.app.domain.usecase.SignUpViewUseCase
+import io.mockk.coEvery
+import io.mockk.mockk
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
+import kotlinx.coroutines.yield
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
+@OptIn(ExperimentalCoroutinesApi::class, DelicateCoroutinesApi::class)
 class SignUpViewModelTest {
+
+    @ExperimentalCoroutinesApi
+    @get:Rule
+    var mainCoroutineRule = MainCoroutineRule()
+
     lateinit var sampleViewModel: SignUpViewModel
+
+    val signUpViewUseCase = mockk<SignUpViewUseCase>()
 
     @Before
     fun initValues() {
-        sampleViewModel = SignUpViewModel()
+        sampleViewModel = SignUpViewModel(signUpViewUseCase)
     }
 
     @Test
-    fun GivenCorrectEmail_WhenEmailChangedAndSubmitClicked_ThenValidationShouldBeTrue() {
+    fun givenEmail_WhenEmailChanged_ThenViewModelEmailMustBeChanged() {
+        var email = "paria.m7616@gmial.com"
+        sampleViewModel.onEmailChanged(email)
+        assertEquals(sampleViewModel.pageState.value.email, email)
+
+        email = "paria"
+        sampleViewModel.onEmailChanged(email)
+        assertEquals(sampleViewModel.pageState.value.email, email)
+
+        email = ""
+        sampleViewModel.onEmailChanged(email)
+        assertEquals(sampleViewModel.pageState.value.email, email)
+    }
+
+    @Test
+    fun givenCorrectEmail_WhenEmailChangedAndSubmitClicked_ThenViewModelEmailValidateShouldBeTrue() {
+        coEvery { signUpViewUseCase.invoke(any()) } returns SignUpResponse(true)
+
         val email = "paria.m7616@gmial.com"
         sampleViewModel.onEmailChanged(email)
         sampleViewModel.onSubmitButtonClicked()
-        assertTrue(sampleViewModel.emailValidateState.value)
+        assertTrue(sampleViewModel.pageState.value.emailValidate)
     }
 
     @Test
-    fun GivenWrongEmail_WhenEmailChangedAndSubmitClicked_ThenValidationShouldBeFalse() {
+    fun givenWrongEmail_WhenEmailChangedAndSubmitClicked_ThenViewModelEmailValidateShouldBeFalse() {
         val email = "paria."
         sampleViewModel.onEmailChanged(email)
         sampleViewModel.onSubmitButtonClicked()
-        assertFalse(sampleViewModel.emailValidateState.value)
+        assertFalse(sampleViewModel.pageState.value.emailValidate)
     }
 
     @Test
-    fun GivenEmptyEmail_WhenEmailChangedAndSubmitClicked_ThenValidationShouldBeFalse() {
+    fun givenEmptyEmail_WhenEmailChangedAndSubmitClicked_ThenValidationShouldBeFalse() {
         val email = ""
         sampleViewModel.onEmailChanged(email)
         sampleViewModel.onSubmitButtonClicked()
-        assertFalse(sampleViewModel.emailValidateState.value)
+        assertFalse(sampleViewModel.pageState.value.emailValidate)
     }
 
     @Test
-    fun GivenCorrectEmail_WhenEmailChangedAndSubmitNotClicked_ThenValidationShouldBeFalse() {
+    fun givenCorrectEmail_WhenEmailChangedAndSubmitClicked_ThenPageStateMustBeSuccess() = runTest {
+        coEvery { signUpViewUseCase.invoke(any()) } coAnswers {
+            yield()
+            SignUpResponse(true)
+        }
         val email = "paria.m7616@gmial.com"
-        sampleViewModel.onEmailChanged(email)
-        assertFalse(sampleViewModel.emailValidateState.value)
+
+        sampleViewModel.pageState.test {
+            sampleViewModel.onEmailChanged(email)
+            assertEquals(PageState.IDLE, awaitItem().pageState)
+
+            sampleViewModel.onSubmitButtonClicked()
+            assertEquals(PageState.IDLE, awaitItem().pageState)
+            assertEquals(PageState.LOADING, awaitItem().pageState)
+            assertEquals(PageState.SUCCESS, awaitItem().pageState)
+        }
     }
 
     @Test
-    fun GivenCorrectEmail_WhenEmailNotChangedAndSubmitClicked_ThenValidationShouldBeFalse() {
-        sampleViewModel.onSubmitButtonClicked()
-        assertFalse(sampleViewModel.emailValidateState.value)
-    }
-    @Test
-    fun GivenMultipleEmail_WhenEmailChangedAndSubmitClicked_ThenValidationShouldBeFalse() {
-        var email = "paria.m7616@gmial.com"
-        sampleViewModel.onEmailChanged(email)
-        email = "pariamsi.m7616@gmial.com"
-        sampleViewModel.onEmailChanged(email)
-        email = "@gmail.com"
-        sampleViewModel.onEmailChanged(email)
-        sampleViewModel.onSubmitButtonClicked()
-        assertFalse(sampleViewModel.emailValidateState.value)
-    }
-    @Test
-    fun GivenCorrectEmail_WhenEmailChangedAndSubmitClickedSeveralTime_ThenValidationShouldBeTrue() {
+    fun givenCorrectEmail_WhenEmailChangedAndSubmitClicked_ThenPageStateMustBeFailed() = runTest {
+        coEvery { signUpViewUseCase.invoke(any()) } coAnswers {
+            yield()
+            SignUpResponse(false)
+        }
         val email = "paria.m7616@gmial.com"
-        sampleViewModel.onEmailChanged(email)
-        sampleViewModel.onSubmitButtonClicked()
-        sampleViewModel.onSubmitButtonClicked()
-        sampleViewModel.onSubmitButtonClicked()
-        assertTrue(sampleViewModel.emailValidateState.value)
-    }
 
-    @Test
-    fun GivenCorrectEmail_WhenEmailNotChangedAndSubmitClickedSeveralTime_ThenValidationShouldBeFalse() {
-        sampleViewModel.onSubmitButtonClicked()
-        sampleViewModel.onSubmitButtonClicked()
-        sampleViewModel.onSubmitButtonClicked()
-        assertFalse(sampleViewModel.emailValidateState.value)
+        sampleViewModel.pageState.test {
+            sampleViewModel.onEmailChanged(email)
+            assertEquals(PageState.IDLE, awaitItem().pageState)
+
+            sampleViewModel.onSubmitButtonClicked()
+            assertEquals(PageState.IDLE, awaitItem().pageState)
+            assertEquals(PageState.LOADING, awaitItem().pageState)
+            assertEquals(PageState.FAILED, awaitItem().pageState)
+        }
     }
 
 }
