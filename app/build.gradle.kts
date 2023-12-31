@@ -99,7 +99,7 @@ dependencies {
     testImplementation(libs.test.mockk)
     testImplementation(libs.test.coroutines)
     testImplementation(libs.test.turbine)
-
+    androidTestImplementation(libs.test.hilt)
 }
 
 kapt {

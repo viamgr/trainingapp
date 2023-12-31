@@ -31,7 +31,7 @@ public final class SignUpViewModel_HiltModules {
 
     @Binds
     @IntoMap
-    @StringKey("com.training.app.trainingapp.main.view_model.signup.SignUpViewModel")
+    @StringKey("com.training.app.trainingapp.main.viewmodel.signup.SignUpViewModel")
     @HiltViewModelMap
     public abstract ViewModel binds(SignUpViewModel vm);
   }
@@ -46,7 +46,7 @@ public final class SignUpViewModel_HiltModules {
     @IntoSet
     @HiltViewModelMap.KeySet
     public static String provide() {
-      return "com.training.app.trainingapp.main.view_model.signup.SignUpViewModel";
+      return "com.training.app.trainingapp.main.viewmodel.signup.SignUpViewModel";
     }
   }
 }

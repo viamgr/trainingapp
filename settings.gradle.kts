@@ -1,5 +1,3 @@
-import java.net.URI
-
 pluginManagement {
     repositories {
         google()
@@ -58,16 +56,18 @@ dependencyResolutionManagement {
             library("kotlin-coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-core").versionRef("kotlinCoroutines")
             bundle("kotlin", listOf("kotlin-bom", "kotlin-coroutines"))
 
+            library("navigation", "androidx.navigation", "navigation-compose").versionRef("navigation")
+            library("navigation-test", "androidx.navigation", "navigation-testing").versionRef("navigation")
+            bundle("navigation", listOf("navigation", "navigation-test"))
+
             library("test-ktx", "androidx.test.ext", "junit-ktx").versionRef("junitKtx")
             library("test-coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("kotlinCoroutines")
             library("test-espresso", "androidx.test.espresso", "espresso-core").versionRef("test-espresso")
             library("test-mockk", "io.mockk", "mockk").versionRef("test-mockk")
             library("test-turbine", "app.cash.turbine", "turbine").versionRef("turbine")
-            bundle("test", listOf("test-ktx", "test-espresso", "test-coroutines", "test-mockk", "test-turbine"))
+            library("test-hilt", "com.google.dagger", "hilt-android-testing").versionRef("hilt")
+            bundle("test", listOf("test-hilt", "test-ktx", "test-espresso", "test-coroutines", "test-mockk", "test-turbine"))
 
-            library("navigation", "androidx.navigation", "navigation-compose").versionRef("navigation")
-            library("navigation-test", "androidx.navigation", "navigation-testing").versionRef("navigation")
-            bundle("navigation", listOf("navigation", "navigation-test"))
         }
     }
 }
