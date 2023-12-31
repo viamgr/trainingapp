@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.training.app.trainingapp.main.state.base.PageState
-import com.training.app.trainingapp.main.view_model.signup.SignUpViewModel
+import com.training.app.trainingapp.main.viewmodel.signup.SignUpViewModel
 import com.training.app.trainingapp.utils.Screen
 import com.trainning.app.domain.model.SignUpResponse
 import com.trainning.app.domain.repository.SignUpRepository

@@ -1,8 +1,8 @@
-package com.training.trainingapp.view_model
+package com.training.trainingapp.viewmodel
 
 import app.cash.turbine.test
 import com.training.app.trainingapp.main.state.base.PageState
-import com.training.app.trainingapp.main.view_model.signup.SignUpViewModel
+import com.training.app.trainingapp.main.viewmodel.signup.SignUpViewModel
 import com.training.trainingapp.MainCoroutineRule
 import com.trainning.app.domain.model.SignUpResponse
 import com.trainning.app.domain.usecase.SignUpViewUseCase

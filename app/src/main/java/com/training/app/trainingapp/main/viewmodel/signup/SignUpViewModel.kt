@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view_model.signup
+package com.training.app.trainingapp.main.viewmodel.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

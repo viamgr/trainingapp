@@ -6,10 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.training.app.trainingapp.main.view.forget_password.ForgetPasswordScreen
+import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordScreen
 import com.training.app.trainingapp.main.view.signup.SignUpScreen
-import com.training.app.trainingapp.main.view_model.ForgetPasswordViewModel
-import com.training.app.trainingapp.main.view_model.signup.SignUpViewModel
+import com.training.app.trainingapp.main.viewmodel.ForgetPasswordViewModel
+import com.training.app.trainingapp.main.viewmodel.signup.SignUpViewModel
 import com.training.app.trainingapp.utils.Screen
 
 @Composable

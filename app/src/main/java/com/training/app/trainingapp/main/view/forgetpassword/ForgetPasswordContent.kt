@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view.forget_password
+package com.training.app.trainingapp.main.view.forgetpassword
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,29 +18,29 @@ import com.training.app.trainingapp.widgets.textFileds.EmailTextFiledView
 
 @Composable
 fun ForgetPasswordContent(
-    userEmail: String,
-    emailValidateState: Boolean,
-    onEmailChanged: (newEmail: String) -> Unit,
-    onSubmitButtonClick: () -> Unit
+        userEmail: String,
+        emailValidateState: Boolean,
+        onEmailChanged: (newEmail: String) -> Unit,
+        onSubmitButtonClick: () -> Unit
 ) {
     Column(
-        Modifier.padding(all = 16.dp),
-        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
+            Modifier.padding(all = 16.dp),
+            verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
     ) {
         EmailTextFiledView(
-            Modifier
-                .fillMaxWidth()
-                .testTag(TestTags.PASSWORD_RECOVERY_EMAIL_TEXT_FILED_ID),
-            userEmail,
-            emailValidateState,
-            onEmailChanged
+                Modifier
+                    .fillMaxWidth()
+                    .testTag(TestTags.PASSWORD_RECOVERY_EMAIL_TEXT_FILED_ID),
+                userEmail,
+                emailValidateState,
+                onEmailChanged
         )
         RoundButtonView(
-            Modifier
-                .fillMaxWidth()
-                .testTag(TestTags.PASSWORD_RECOVERY_BUTTON_ID),
-            stringResource(id = R.string.password_recovery),
-            onSubmitButtonClick
+                Modifier
+                    .fillMaxWidth()
+                    .testTag(TestTags.PASSWORD_RECOVERY_BUTTON_ID),
+                stringResource(id = R.string.password_recovery),
+                onSubmitButtonClick
         )
     }
 }

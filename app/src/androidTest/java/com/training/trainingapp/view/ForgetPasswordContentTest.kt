@@ -3,7 +3,7 @@ package com.training.trainingapp.view
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.training.app.trainingapp.main.view.forget_password.ForgetPasswordContent
+import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordContent
 import com.training.app.trainingapp.utils.TestTags
 import org.junit.Rule
 import org.junit.Test
@@ -20,11 +20,11 @@ class ForgetPasswordContentTest {
 
         composeTestRule.setContent {
             ForgetPasswordContent("",
-                false,
-                onEmailChanged = {
-                },
-                onSubmitButtonClick = {
-                })
+                                  false,
+                                  onEmailChanged = {
+                                  },
+                                  onSubmitButtonClick = {
+                                  })
         }
 
         composeTestRule.onNodeWithTag(TestTags.EMAIL_TEXT_FILED_ID).assertExists()

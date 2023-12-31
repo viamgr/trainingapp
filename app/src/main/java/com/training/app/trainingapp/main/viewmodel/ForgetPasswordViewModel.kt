@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view_model
+package com.training.app.trainingapp.main.viewmodel
 
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
-class ForgetPasswordViewModel  @Inject constructor() : ViewModel() {
+class ForgetPasswordViewModel @Inject constructor() : ViewModel() {
 
     private val _userEmail = MutableStateFlow("")
     val userEmail: StateFlow<String> = _userEmail
