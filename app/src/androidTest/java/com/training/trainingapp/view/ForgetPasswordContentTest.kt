@@ -27,8 +27,8 @@ class ForgetPasswordContentTest {
                                   })
         }
 
-        composeTestRule.onNodeWithTag(TestTags.EMAIL_TEXT_FILED_ID).assertExists()
-        composeTestRule.onNodeWithTag(TestTags.CHECK_BUTTON_ID).assertExists()
+        composeTestRule.onNodeWithTag(TestTags.PASSWORD_RECOVERY_EMAIL_TEXT_FILED_ID).assertExists()
+        composeTestRule.onNodeWithTag(TestTags.PASSWORD_RECOVERY_BUTTON_ID).assertExists()
     }
 
 }
