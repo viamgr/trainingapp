@@ -28,6 +28,14 @@ class ForgetPasswordViewModel @Inject constructor() : ViewModel() {
         }
     }
 
+    fun getEmail(): String {
+        return userEmail.value
+    }
+
+    fun getEmailValidate(): Boolean {
+        return emailValidateState.value
+    }
+
     private fun sendEmailForPasswordRecovery() {
         //TODO
     }

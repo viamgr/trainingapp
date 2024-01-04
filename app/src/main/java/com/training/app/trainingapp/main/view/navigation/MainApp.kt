@@ -1,7 +1,6 @@
 package com.training.app.trainingapp.main.view.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,8 +13,8 @@ import com.training.app.trainingapp.utils.Screen
 
 @Composable
 fun MainApp(
-        signUpViewModel: SignUpViewModel = viewModel(),
-        forgetPasswordViewModel: ForgetPasswordViewModel = viewModel(),
+        signUpViewModel: SignUpViewModel,
+        forgetPasswordViewModel: ForgetPasswordViewModel,
         navController: NavHostController = rememberNavController()
 ) {
     NavHost(navController, startDestination = Screen.Register.name) {

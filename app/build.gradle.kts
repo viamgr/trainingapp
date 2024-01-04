@@ -34,6 +34,14 @@ android {
         }
     }
 
+    testOptions {
+        packagingOptions {
+            jniLibs {
+                useLegacyPackaging = true
+            }
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -45,7 +53,7 @@ android {
 
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            resources.excludes.add("META-INF/*")
         }
     }
 
@@ -97,6 +105,7 @@ dependencies {
     implementation(project(mapOf("path" to ":data:authorization")))
 
     testImplementation(libs.test.mockk)
+    androidTestImplementation("io.mockk:mockk-android:1.13.8")
     //androidTestImplementation(libs.test.mockk.android)
     testImplementation(libs.test.coroutines)
     testImplementation(libs.test.turbine)

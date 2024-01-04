@@ -8,34 +8,43 @@ import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import com.training.app.trainingapp.main.view.navigation.MainApp
+import com.training.app.trainingapp.main.viewmodel.ForgetPasswordViewModel
+import com.training.app.trainingapp.main.viewmodel.signup.SignUpViewModel
 import com.training.app.trainingapp.utils.Screen
 import com.training.app.trainingapp.utils.TestTags
-import dagger.hilt.android.testing.HiltAndroidRule
-import dagger.hilt.android.testing.HiltAndroidTest
+import com.trainning.app.domain.model.SignUpResponse
+import com.trainning.app.domain.usecase.SignUpViewUseCase
+import io.mockk.coEvery
+import io.mockk.mockk
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-@HiltAndroidTest
-class MainScreenNavigationTest {
 
-    @get:Rule
-    var hiltRule = HiltAndroidRule(this)
+class MainScreenNavigationTest {
 
     @get:Rule
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
     private lateinit var navController: TestNavHostController
 
+    val signUpViewUseCase = mockk<SignUpViewUseCase>()
+    val forgetPasswordViewModel = mockk<ForgetPasswordViewModel>()
+
+
     @Before
     fun setupMainNavHost() {
-        hiltRule.inject()
+        coEvery { signUpViewUseCase.invoke(any()) } returns SignUpResponse(true)
+        coEvery { forgetPasswordViewModel.getEmail() } returns ""
+        coEvery { forgetPasswordViewModel.getEmailValidate() } returns true
+
+        val signUpViewModel = SignUpViewModel(signUpViewUseCase)
 
         composeTestRule.setContent {
             navController = TestNavHostController(LocalContext.current).apply {
                 navigatorProvider.addNavigator(ComposeNavigator())
             }
-            MainApp(navController = navController)
+            MainApp(signUpViewModel, forgetPasswordViewModel, navController = navController)
         }
     }
 
@@ -51,7 +60,7 @@ class MainScreenNavigationTest {
     }
 
     @Test
-    fun mainNavHost_ClickBackOnForgetPasswordScreen_NavigatesToRegisterScreen(){
+    fun mainNavHost_ClickBackOnForgetPasswordScreen_NavigatesToRegisterScreen() {
         navigateToForgetPasswordScreen()
         performNavigateUp()
         navController.assertCurrentRouteName(Screen.Register.name)
