@@ -10,11 +10,17 @@ import androidx.navigation.testing.TestNavHostController
 import com.training.app.trainingapp.main.view.navigation.MainApp
 import com.training.app.trainingapp.utils.Screen
 import com.training.app.trainingapp.utils.TestTags
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+@HiltAndroidTest
 class MainScreenNavigationTest {
+
+    @get:Rule
+    var hiltRule = HiltAndroidRule(this)
 
     @get:Rule
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
@@ -23,6 +29,8 @@ class MainScreenNavigationTest {
 
     @Before
     fun setupMainNavHost() {
+        hiltRule.inject()
+
         composeTestRule.setContent {
             navController = TestNavHostController(LocalContext.current).apply {
                 navigatorProvider.addNavigator(ComposeNavigator())

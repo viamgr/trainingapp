@@ -64,6 +64,7 @@ dependencyResolutionManagement {
             library("test-coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("kotlinCoroutines")
             library("test-espresso", "androidx.test.espresso", "espresso-core").versionRef("test-espresso")
             library("test-mockk", "io.mockk", "mockk").versionRef("test-mockk")
+            library("test-mockk-android", "io.mockk", "mockk-android").versionRef("test-mockk")
             library("test-turbine", "app.cash.turbine", "turbine").versionRef("turbine")
             library("test-hilt", "com.google.dagger", "hilt-android-testing").versionRef("hilt")
             bundle("test", listOf("test-hilt", "test-ktx", "test-espresso", "test-coroutines", "test-mockk", "test-turbine"))

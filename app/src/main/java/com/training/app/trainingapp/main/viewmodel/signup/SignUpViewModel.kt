@@ -19,7 +19,6 @@ class SignUpViewModel @Inject constructor(private val registerViewUseCase: SignU
     private val _pageState = MutableStateFlow(SignUpPageState(PageState.IDLE, "", "", true))
     val pageState: StateFlow<SignUpPageState> = _pageState
 
-
     private fun validateEmail() {
         _pageState.update { _pageState.value.copy(emailValidate = RegexChecker.isEmailCorrect(_pageState.value.email)) }
     }
@@ -45,5 +44,4 @@ class SignUpViewModel @Inject constructor(private val registerViewUseCase: SignU
             _pageState.update { _pageState.value.copy(pageState = pageState) }
         }
     }
-
 }

@@ -90,13 +90,14 @@ dependencies {
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
-    implementation(libs.navigation)
     androidTestImplementation(libs.navigation.test)
+    implementation(libs.navigation)
 
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data:authorization")))
 
     testImplementation(libs.test.mockk)
+    //androidTestImplementation(libs.test.mockk.android)
     testImplementation(libs.test.coroutines)
     testImplementation(libs.test.turbine)
     androidTestImplementation(libs.test.hilt)
