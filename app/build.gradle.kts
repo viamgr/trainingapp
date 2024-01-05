@@ -28,8 +28,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -100,6 +100,13 @@ dependencies {
 
     androidTestImplementation(libs.navigation.test)
     implementation(libs.navigation)
+
+    implementation(libs.kotlin.test)
+    androidTestImplementation(libs.kotlin.test)
+
+
+    testImplementation(libs.jupiter)
+    testRuntimeOnly(libs.jupiter.engine)
 
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data:authorization")))
