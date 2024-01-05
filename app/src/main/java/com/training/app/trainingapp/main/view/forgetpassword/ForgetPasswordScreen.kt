@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view.forget_password
+package com.training.app.trainingapp.main.view.forgetpassword
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
@@ -7,6 +7,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import com.training.app.trainingapp.main.viewmodel.forgetpassword.ForgetPasswordViewModel
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable

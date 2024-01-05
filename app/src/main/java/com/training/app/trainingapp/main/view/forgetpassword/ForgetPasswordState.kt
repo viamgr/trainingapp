@@ -1,4 +1,4 @@
-package com.training.app.trainingapp.main.view.forget_password
+package com.training.app.trainingapp.main.view.forgetpassword
 
 data class ForgetPasswordState(
     val email: String,

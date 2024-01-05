@@ -1,8 +1,8 @@
-package com.training.trainingapp.view_model
+package com.training.trainingapp.viewmodel
 
-import com.training.app.trainingapp.main.view.forget_password.ForgetPasswordEffect
-import com.training.app.trainingapp.main.view.forget_password.ForgetPasswordEvent
-import com.training.app.trainingapp.main.view.forget_password.ForgetPasswordViewModel
+import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordEffect
+import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordEvent
+import com.training.app.trainingapp.main.viewmodel.forgetpassword.ForgetPasswordViewModel
 import com.trainning.app.domain.model.ForgetPasswordResponse
 import com.trainning.app.domain.usecase.ForgetPasswordUseCase
 import io.mockk.coEvery
@@ -138,6 +138,7 @@ class ForgetPasswordViewModelTest {
             viewModel.onEvent(ForgetPasswordEvent.OnSubmitButtonClicked)
             assertTrue(viewModel.state.value.isDisplayedSnackbar)
         }
+
     @Test
     fun givenWrongEmail_WhenEmailChangedAndSubmitButtonClicked_ThenSnackBarStateShoudBeFalse() =
         runTest {
@@ -169,7 +170,7 @@ class ForgetPasswordViewModelTest {
             viewModel.onEvent(ForgetPasswordEvent.OnSubmitButtonClicked)
             val effect = viewModel.efectFlow.first()
             effect as ForgetPasswordEffect.ShowSnackbar
-            assertEquals("success",effect.message)
+            assertEquals("success", effect.message)
         }
 
     @Test
@@ -187,6 +188,6 @@ class ForgetPasswordViewModelTest {
             viewModel.onEvent(ForgetPasswordEvent.OnSubmitButtonClicked)
             val effect = viewModel.efectFlow.first()
             effect as ForgetPasswordEffect.ShowSnackbar
-            assertEquals("failed",effect.message)
+            assertEquals("failed", effect.message)
         }
 }

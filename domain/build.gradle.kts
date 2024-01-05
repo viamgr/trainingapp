@@ -37,7 +37,7 @@ android {
 dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.test.espresso)
-    androidTestImplementation(libs.test.ktx)
+    androidTestImplementation(libs.test.junit)
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)

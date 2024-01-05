@@ -1,10 +1,13 @@
 package com.training.app.trainingapp.main.viewmodel;
 
+import com.training.app.trainingapp.main.viewmodel.forgetpassword.ForgetPasswordViewModel;
+import com.trainning.app.domain.usecase.ForgetPasswordUseCase;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import dagger.internal.QualifierMetadata;
 import dagger.internal.ScopeMetadata;
 import javax.annotation.processing.Generated;
+import javax.inject.Provider;
 
 @ScopeMetadata
 @QualifierMetadata
@@ -20,20 +23,24 @@ import javax.annotation.processing.Generated;
     "KotlinInternalInJava"
 })
 public final class ForgetPasswordViewModel_Factory implements Factory<ForgetPasswordViewModel> {
+  private final Provider<ForgetPasswordUseCase> forgetPasswordUseCaseProvider;
+
+  public ForgetPasswordViewModel_Factory(
+      Provider<ForgetPasswordUseCase> forgetPasswordUseCaseProvider) {
+    this.forgetPasswordUseCaseProvider = forgetPasswordUseCaseProvider;
+  }
+
   @Override
   public ForgetPasswordViewModel get() {
-    return newInstance();
+    return newInstance(forgetPasswordUseCaseProvider.get());
   }
 
-  public static ForgetPasswordViewModel_Factory create() {
-    return InstanceHolder.INSTANCE;
+  public static ForgetPasswordViewModel_Factory create(
+      Provider<ForgetPasswordUseCase> forgetPasswordUseCaseProvider) {
+    return new ForgetPasswordViewModel_Factory(forgetPasswordUseCaseProvider);
   }
 
-  public static ForgetPasswordViewModel newInstance() {
-    return new ForgetPasswordViewModel();
-  }
-
-  private static final class InstanceHolder {
-    private static final ForgetPasswordViewModel_Factory INSTANCE = new ForgetPasswordViewModel_Factory();
+  public static ForgetPasswordViewModel newInstance(ForgetPasswordUseCase forgetPasswordUseCase) {
+    return new ForgetPasswordViewModel(forgetPasswordUseCase);
   }
 }

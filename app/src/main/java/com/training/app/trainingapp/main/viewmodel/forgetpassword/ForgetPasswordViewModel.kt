@@ -1,8 +1,11 @@
-package com.training.app.trainingapp.main.viewmodel
+package com.training.app.trainingapp.main.viewmodel.forgetpassword
 
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordEffect
+import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordEvent
+import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordState
 import com.trainning.app.domain.usecase.ForgetPasswordUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

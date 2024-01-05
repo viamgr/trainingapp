@@ -8,11 +8,13 @@ import androidx.compose.ui.test.performClick
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
 import com.training.app.trainingapp.main.view.navigation.MainApp
-import com.training.app.trainingapp.main.viewmodel.ForgetPasswordViewModel
+import com.training.app.trainingapp.main.viewmodel.forgetpassword.ForgetPasswordViewModel
 import com.training.app.trainingapp.main.viewmodel.signup.SignUpViewModel
 import com.training.app.trainingapp.utils.Screen
 import com.training.app.trainingapp.utils.TestTags
+import com.trainning.app.domain.model.ForgetPasswordResponse
 import com.trainning.app.domain.model.SignUpResponse
+import com.trainning.app.domain.usecase.ForgetPasswordUseCase
 import com.trainning.app.domain.usecase.SignUpViewUseCase
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -29,16 +31,15 @@ class MainScreenNavigationTest {
     private lateinit var navController: TestNavHostController
 
     val signUpViewUseCase = mockk<SignUpViewUseCase>()
-    val forgetPasswordViewModel = mockk<ForgetPasswordViewModel>()
-
+    val forgetPasswordUseCase = mockk<ForgetPasswordUseCase>()
 
     @Before
     fun setupMainNavHost() {
         coEvery { signUpViewUseCase.invoke(any()) } returns SignUpResponse(true)
-        coEvery { forgetPasswordViewModel.getEmail() } returns ""
-        coEvery { forgetPasswordViewModel.getEmailValidate() } returns true
+        coEvery { forgetPasswordUseCase.invoke(any()) } returns ForgetPasswordResponse(true)
 
         val signUpViewModel = SignUpViewModel(signUpViewUseCase)
+        val forgetPasswordViewModel = ForgetPasswordViewModel(forgetPasswordUseCase)
 
         composeTestRule.setContent {
             navController = TestNavHostController(LocalContext.current).apply {
@@ -76,5 +77,4 @@ class MainScreenNavigationTest {
             navController.navigateUp()
         }
     }
-
 }

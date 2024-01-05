@@ -38,7 +38,6 @@ dependencyResolutionManagement {
             library("compose-ui-test", "androidx.compose.ui", "ui-test-junit4").versionRef("compose")
             library("compose-ui-test-manifest", "androidx.compose.ui", "ui-test-manifest").versionRef("compose")
             library("compose-activity", "androidx.activity", "activity-compose").versionRef("compose-activity")
-
             bundle("compose", listOf("compose-ui", "compose-ui-tooling", "compose-ui-tooling-preview" , "compose-ui-graphics" , "compose-ui-test",
                 "compose-ui-test-manifest","compose-activity"))
 
@@ -51,48 +50,24 @@ dependencyResolutionManagement {
             library("junit", "junit", "junit").versionRef("junit")
 
             library("kotlin-bom", "org.jetbrains.kotlin", "kotlin-bom").versionRef("kotlinBom")
-            library(
-                "kotlin-coroutines",
-                "org.jetbrains.kotlinx",
-                "kotlinx-coroutines-core"
-            ).versionRef("kotlinCoroutines")
-            library(
-                "kotlin-test",
-                "org.jetbrains.kotlinx",
-                "kotlinx-coroutines-test"
-            ).versionRef("kotlinCoroutines")
-            bundle("kotlin", listOf("kotlin-bom", "kotlin-coroutines", "kotlin-test"))
+            library("kotlin-coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-core").versionRef("kotlinCoroutines")
+            bundle("kotlin", listOf("kotlin-bom", "kotlin-coroutines"))
 
             library("navigation", "androidx.navigation", "navigation-compose").versionRef("navigation")
-            library("navigation-test", "androidx.navigation", "navigation-testing").versionRef("navigation")
-            bundle("navigation", listOf("navigation", "navigation-test"))
 
-            library("test-ktx", "androidx.test.ext", "junit-ktx").versionRef("junitKtx")
-            library(
-                "test-espresso",
-                "androidx.test.espresso",
-                "espresso-core"
-            ).versionRef("test-espresso")
-            bundle("test", listOf("test-ktx", "test-espresso"))
+            library("jupiter", "org.junit.jupiter", "junit-jupiter-api").versionRef("jupiter")
+            library("jupiter-engine", "org.junit.jupiter", "junit-jupiter-engine").versionRef("jupiter")
+            bundle("jupiter", listOf("jupiter", "jupiter-engine"))
+
             library("test-coroutines", "org.jetbrains.kotlinx", "kotlinx-coroutines-test").versionRef("kotlinCoroutines")
             library("test-espresso", "androidx.test.espresso", "espresso-core").versionRef("test-espresso")
             library("test-mockk", "io.mockk", "mockk").versionRef("test-mockk")
             library("test-mockk-android", "io.mockk", "mockk-android").versionRef("test-mockk")
             library("test-turbine", "app.cash.turbine", "turbine").versionRef("turbine")
             library("test-hilt", "com.google.dagger", "hilt-android-testing").versionRef("hilt")
-            bundle("test", listOf("test-hilt", "test-ktx", "test-espresso", "test-coroutines", "test-mockk", "test-turbine"))
-
-            library(
-                "jupiter",
-                "org.junit.jupiter",
-                "junit-jupiter-api"
-            ).versionRef("jupiter")
-            library(
-                "jupiter-engine",
-                "org.junit.jupiter",
-                "junit-jupiter-engine"
-            ).versionRef("jupiter")
-            bundle("test", listOf("jupiter", "jupiter-engine"))
+            library("test-junit", "androidx.test.ext", "junit-ktx").versionRef("junitKtx")
+            library("test-navigation", "androidx.navigation", "navigation-testing").versionRef("navigation")
+            bundle("test", listOf("test-hilt", "test-junit" ,"test-navigation", "test-espresso", "test-coroutines", "test-mockk", "test-turbine"))
 
         }
     }

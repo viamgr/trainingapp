@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import com.training.app.trainingapp.main.view.navigation.MainApp
-import com.training.app.trainingapp.main.viewmodel.ForgetPasswordViewModel
+import com.training.app.trainingapp.main.viewmodel.forgetpassword.ForgetPasswordViewModel
 import com.training.app.trainingapp.main.viewmodel.signup.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
