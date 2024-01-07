@@ -20,13 +20,12 @@ fun MainApp(
     NavHost(navController, startDestination = Screen.Register.name) {
         composable(Screen.Register.name) {
             SignUpScreen(
-                    navController = navController,
-                    signUpViewModel = signUpViewModel
+                navController = navController, signUpViewModel = signUpViewModel
             )
         }
         composable(Screen.ForgetPassword.name) {
             ForgetPasswordScreen(
-                    viewModel = forgetPasswordViewModel
+                viewModel = forgetPasswordViewModel
             )
         }
     }

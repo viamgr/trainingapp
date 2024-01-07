@@ -4,7 +4,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordContent
-import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordState
+import com.training.app.trainingapp.main.state.forgetpassword.ForgetPasswordState
 import com.training.app.trainingapp.utils.TestTags
 import org.junit.Rule
 import org.junit.Test
@@ -18,7 +18,6 @@ class ForgetPasswordContentTest {
 
     @Test
     fun givenView_WhenViewCreate_ThenShouldAllViewDisplayed() {
-
         composeTestRule.setContent {
             ForgetPasswordContent(
                 ForgetPasswordState(),

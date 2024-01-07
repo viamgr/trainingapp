@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordEffect
 import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordEvent
-import com.training.app.trainingapp.main.view.forgetpassword.ForgetPasswordState
+import com.training.app.trainingapp.main.state.forgetpassword.ForgetPasswordState
 import com.trainning.app.domain.usecase.ForgetPasswordUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -66,7 +66,7 @@ class ForgetPasswordViewModel @Inject constructor(private val forgetPasswordUseC
                 _state.update { mState ->
                     mState.copy(forgetPasswordResponse = it.isSuccess, isDisplayedSnackbar = true)
                 }
-                val message = if(it.isSuccess) "success" else "failed"
+                val message = if (it.isSuccess) "success" else "failed"
                 _efectFlow.tryEmit(
                     ForgetPasswordEffect.ShowSnackbar(
                         message = message
@@ -75,4 +75,5 @@ class ForgetPasswordViewModel @Inject constructor(private val forgetPasswordUseC
             }
         }
     }
+
 }

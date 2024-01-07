@@ -17,14 +17,12 @@ class RegisterPageViewTest {
 
     @Test
     fun givenView_WhenViewCreate_ThenShouldAllViewDisplayed() {
-
         composeTestRule.setContent {
             SignUpContent("",
-                          false,
-                          onEmailChanged = {
-                          },
-                          onSubmitButtonClick = {
-                          }, onForgetPasswordClick = {})
+                false,
+                onEmailChanged = {},
+                onSubmitButtonClick = {},
+                onForgetPasswordClick = {})
         }
 
         composeTestRule.onNodeWithTag(TestTags.EMAIL_TEXT_FILED_ID).assertExists()

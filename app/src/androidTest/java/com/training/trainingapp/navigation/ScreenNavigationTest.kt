@@ -68,8 +68,7 @@ class MainScreenNavigationTest {
     }
 
     private fun navigateToForgetPasswordScreen() {
-        composeTestRule.onNodeWithTag(TestTags.FORGET_PASSWORD_TEXT_ID)
-            .performClick()
+        composeTestRule.onNodeWithTag(TestTags.FORGET_PASSWORD_TEXT_ID).performClick()
     }
 
     private fun performNavigateUp() {
@@ -77,4 +76,5 @@ class MainScreenNavigationTest {
             navController.navigateUp()
         }
     }
+
 }

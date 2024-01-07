@@ -12,6 +12,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.training.app.trainingapp.R
+import com.training.app.trainingapp.main.state.forgetpassword.ForgetPasswordState
 import com.training.app.trainingapp.utils.TestTags
 import com.training.app.trainingapp.widgets.buttons.RoundButtonView
 import com.training.app.trainingapp.widgets.textFileds.EmailTextFiledView

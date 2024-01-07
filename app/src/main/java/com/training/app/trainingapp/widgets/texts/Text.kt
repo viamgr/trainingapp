@@ -11,10 +11,9 @@ import com.training.app.trainingapp.R
 
 @Composable
 fun Text(modifier: Modifier, text: String, onClicked: () -> Unit) {
-    Button(modifier = modifier,
-        onClick = onClicked, content = {
-            Text(text)
-        })
+    Button(modifier = modifier, onClick = onClicked, content = {
+        Text(text)
+    })
 }
 
 @Preview

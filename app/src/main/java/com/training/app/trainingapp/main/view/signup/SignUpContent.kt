@@ -18,42 +18,41 @@ import com.training.app.trainingapp.widgets.buttons.RoundButtonView
 import com.training.app.trainingapp.widgets.textFileds.EmailTextFiledView
 import com.training.app.trainingapp.widgets.texts.Text
 
-
 @Composable
 fun SignUpContent(
-        userEmail: String,
-        emailValidateState: Boolean,
-        onEmailChanged: (newEmail: String) -> Unit,
-        onSubmitButtonClick: () -> Unit,
-        onForgetPasswordClick: () -> Unit
+    userEmail: String,
+    emailValidateState: Boolean,
+    onEmailChanged: (newEmail: String) -> Unit,
+    onSubmitButtonClick: () -> Unit,
+    onForgetPasswordClick: () -> Unit
 ) {
     Column(
-            Modifier.padding(all = 16.dp),
-            verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
+        Modifier.padding(all = 16.dp),
+        verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
     ) {
         EmailTextFiledView(
-                Modifier
-                    .fillMaxWidth()
-                    .testTag(TestTags.EMAIL_TEXT_FILED_ID),
-                userEmail,
-                emailValidateState,
-                onEmailChanged
+            Modifier
+                .fillMaxWidth()
+                .testTag(TestTags.EMAIL_TEXT_FILED_ID),
+            userEmail,
+            emailValidateState,
+            onEmailChanged
         )
         RoundButtonView(
-                Modifier
-                    .fillMaxWidth()
-                    .testTag(TestTags.CHECK_BUTTON_ID),
-                stringResource(id = R.string.check),
-                onSubmitButtonClick
+            Modifier
+                .fillMaxWidth()
+                .testTag(TestTags.CHECK_BUTTON_ID),
+            stringResource(id = R.string.check),
+            onSubmitButtonClick
         )
         Text(
-                modifier = Modifier
-                    .testTag(TestTags.FORGET_PASSWORD_TEXT_ID)
-                    .clickable {
-                        onForgetPasswordClick()
-                    },
-                text = stringResource(id = R.string.forget_password),
-                onForgetPasswordClick
+            modifier = Modifier
+                .testTag(TestTags.FORGET_PASSWORD_TEXT_ID)
+                .clickable {
+                    onForgetPasswordClick()
+                },
+            text = stringResource(id = R.string.forget_password),
+            onForgetPasswordClick
         )
     }
 }

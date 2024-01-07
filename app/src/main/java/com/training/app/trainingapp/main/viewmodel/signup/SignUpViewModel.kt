@@ -14,13 +14,20 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpViewModel @Inject constructor(private val registerViewUseCase: SignUpViewUseCase) : ViewModel() {
+class SignUpViewModel @Inject constructor(private val registerViewUseCase: SignUpViewUseCase) :
+    ViewModel() {
 
     private val _pageState = MutableStateFlow(SignUpPageState(PageState.IDLE, "", "", true))
     val pageState: StateFlow<SignUpPageState> = _pageState
 
     private fun validateEmail() {
-        _pageState.update { _pageState.value.copy(emailValidate = RegexChecker.isEmailCorrect(_pageState.value.email)) }
+        _pageState.update {
+            _pageState.value.copy(
+                emailValidate = RegexChecker.isEmailCorrect(
+                    _pageState.value.email
+                )
+            )
+        }
     }
 
     fun onEmailChanged(email: String) {
@@ -44,4 +51,5 @@ class SignUpViewModel @Inject constructor(private val registerViewUseCase: SignU
             _pageState.update { _pageState.value.copy(pageState = pageState) }
         }
     }
+
 }

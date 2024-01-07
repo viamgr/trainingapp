@@ -7,7 +7,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import com.training.app.trainingapp.main.state.forgetpassword.ForgetPasswordState
 import com.training.app.trainingapp.main.viewmodel.forgetpassword.ForgetPasswordViewModel
+import com.trainning.app.domain.model.ForgetPasswordResponse
+import com.trainning.app.domain.repository.ForgetPasswordRepository
+import com.trainning.app.domain.usecase.ForgetPasswordUseCase
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -39,5 +43,12 @@ fun ForgetPasswordScreen(viewModel: ForgetPasswordViewModel) {
 @Preview
 @Composable
 fun ForgetPasswordScreenPreview() {
-    //ForgetPasswordScreen(ForgetPasswordViewModel())
+    ForgetPasswordScreen(
+        ForgetPasswordViewModel(ForgetPasswordUseCase(object :
+            ForgetPasswordRepository {
+            override suspend fun forgetPassword(email: String): ForgetPasswordResponse {
+                return ForgetPasswordResponse(true)
+            }
+        }))
+    )
 }

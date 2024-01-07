@@ -7,19 +7,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
-
 @Composable
 fun RoundButtonView(
-        modifier: Modifier,
-        text: String,
-        onSubmitButtonClick: () -> Unit
+    modifier: Modifier, text: String, onSubmitButtonClick: () -> Unit
 ) {
-    Button(modifier = modifier,
-           onClick = onSubmitButtonClick, content = {
+    Button(modifier = modifier, onClick = onSubmitButtonClick, content = {
         Text(text)
     })
 }
-
 
 @Preview
 @Composable

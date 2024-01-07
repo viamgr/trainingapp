@@ -15,7 +15,6 @@ class MainActivity : ComponentActivity() {
     private val signUpViewModel: SignUpViewModel by viewModels()
     private val forgetPasswordViewModel: ForgetPasswordViewModel by viewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

@@ -21,24 +21,24 @@ import com.trainning.app.domain.usecase.SignUpViewUseCase
 
 @Composable
 fun SignUpScreen(
-        navController: NavController,
-        signUpViewModel: SignUpViewModel
+    navController: NavController,
+    signUpViewModel: SignUpViewModel
 ) {
     Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
             val pageState = signUpViewModel.pageState.collectAsState().value
             if (pageState.pageState != PageState.LOADING) {
                 SignUpContent(pageState.email,
-                              pageState.emailValidate,
-                              onEmailChanged = {
-                                  signUpViewModel.onEmailChanged(it)
-                              },
-                              onSubmitButtonClick = {
-                                  signUpViewModel.onSubmitButtonClicked()
-                              },
-                              onForgetPasswordClick = {
-                                  navController.navigate(Screen.ForgetPassword.name)
-                              })
+                    pageState.emailValidate,
+                    onEmailChanged = {
+                        signUpViewModel.onEmailChanged(it)
+                    },
+                    onSubmitButtonClick = {
+                        signUpViewModel.onSubmitButtonClicked()
+                    },
+                    onForgetPasswordClick = {
+                        navController.navigate(Screen.ForgetPassword.name)
+                    })
             } else {
                 CircularProgressIndicator(modifier = Modifier.requiredSize(48.dp, 48.dp))
             }
@@ -49,9 +49,12 @@ fun SignUpScreen(
 @Preview
 @Composable
 fun SignUpScreenPreview() {
-    SignUpScreen(rememberNavController(), SignUpViewModel(SignUpViewUseCase(object : SignUpRepository {
-        override suspend fun signup(email: String): SignUpResponse {
-            return SignUpResponse(true)
-        }
-    })))
+    SignUpScreen(
+        rememberNavController(),
+        SignUpViewModel(SignUpViewUseCase(object : SignUpRepository {
+            override suspend fun signup(email: String): SignUpResponse {
+                return SignUpResponse(true)
+            }
+        }))
+    )
 }
