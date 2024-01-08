@@ -28,9 +28,17 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
+        }
+    }
+
+    testOptions {
+        packagingOptions {
+            jniLibs {
+                useLegacyPackaging = true
+            }
         }
     }
 
@@ -45,7 +53,7 @@ android {
 
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            resources.excludes.add("META-INF/*")
         }
     }
 
@@ -81,21 +89,30 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
 
-    implementation(libs.test.ktx)
+    implementation(libs.test.junit)
     testImplementation(libs.junit)
     androidTestImplementation(libs.test.espresso)
-    androidTestImplementation(libs.test.ktx)
+    androidTestImplementation(libs.test.junit)
     androidTestImplementation(libs.compose.ui.test)
 
     implementation(libs.hilt)
     kapt(libs.hilt.compiler)
 
+    implementation(libs.navigation)
+
+    testImplementation(libs.jupiter)
+    testRuntimeOnly(libs.jupiter.engine)
+
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data:authorization")))
 
     testImplementation(libs.test.mockk)
+    androidTestImplementation(libs.test.mockk.android)
     testImplementation(libs.test.coroutines)
+    androidTestImplementation(libs.test.coroutines)
     testImplementation(libs.test.turbine)
+    androidTestImplementation(libs.test.hilt)
+    androidTestImplementation(libs.test.navigation)
 
 }
 

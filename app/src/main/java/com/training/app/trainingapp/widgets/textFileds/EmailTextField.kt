@@ -6,16 +6,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
-
 @Composable
-fun EmailTextFiledView(modifier: Modifier, email: String, isEmailCorrect: Boolean, onEmailChanged: (newEmail: String) -> Unit) {
+fun EmailTextFiledView(
+    modifier: Modifier,
+    email: String,
+    isEmailCorrect: Boolean,
+    onEmailChanged: (newEmail: String) -> Unit
+) {
     TextField(
         email, onValueChange = {
             onEmailChanged(it)
         }, modifier = modifier, isError = !isEmailCorrect, singleLine = true
     )
 }
-
 
 @Preview
 @Composable

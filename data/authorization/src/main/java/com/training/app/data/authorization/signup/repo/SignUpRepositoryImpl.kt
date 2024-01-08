@@ -6,7 +6,8 @@ import com.trainning.app.domain.model.SignUpResponse
 import com.trainning.app.domain.repository.SignUpRepository
 import javax.inject.Inject
 
-internal class SignUpRepositoryImpl @Inject constructor(private val dataProvider: SignUpDataProvider) : SignUpRepository {
+internal class SignUpRepositoryImpl @Inject constructor(private val dataProvider: SignUpDataProvider) :
+    SignUpRepository {
     override suspend fun signup(email: String): SignUpResponse {
         return SignUpModelResponseAdapter(dataProvider.register(email)).map()
     }

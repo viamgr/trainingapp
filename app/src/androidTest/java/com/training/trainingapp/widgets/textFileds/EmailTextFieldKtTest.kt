@@ -19,7 +19,6 @@ class EmailTextFieldKtTest {
     @get: Rule
     val composeTestRule = createComposeRule()
 
-
     @Test
     fun givenView_WhenViewCreate_ThenShouldTextFieldDisplayed() {
         showSampleTextFiled("", false) {}
@@ -45,12 +44,16 @@ class EmailTextFieldKtTest {
         TestCase.assertEquals(email, "Hi")
     }
 
-
-    private fun showSampleTextFiled(email: String, isEmailCorrect: Boolean, onEmailChanged: (newEmail: String) -> Unit) {
+    private fun showSampleTextFiled(
+        email: String, isEmailCorrect: Boolean, onEmailChanged: (newEmail: String) -> Unit
+    ) {
         composeTestRule.setContent {
             EmailTextFiledView(
-                Modifier.fillMaxWidth().testTag(id),
-                email, isEmailCorrect,
+                Modifier
+                    .fillMaxWidth()
+                    .testTag(id),
+                email,
+                isEmailCorrect,
                 onEmailChanged = onEmailChanged
             )
         }

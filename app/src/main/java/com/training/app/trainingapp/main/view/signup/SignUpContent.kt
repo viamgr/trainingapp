@@ -1,5 +1,6 @@
-package com.training.app.trainingapp.main.view.forget_password
+package com.training.app.trainingapp.main.view.signup
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,13 +16,15 @@ import com.training.app.trainingapp.R
 import com.training.app.trainingapp.utils.TestTags
 import com.training.app.trainingapp.widgets.buttons.RoundButtonView
 import com.training.app.trainingapp.widgets.textFileds.EmailTextFiledView
+import com.training.app.trainingapp.widgets.texts.Text
 
 @Composable
-fun ForgetPasswordContent(
+fun SignUpContent(
     userEmail: String,
     emailValidateState: Boolean,
     onEmailChanged: (newEmail: String) -> Unit,
-    onSubmitButtonClick: () -> Unit
+    onSubmitButtonClick: () -> Unit,
+    onForgetPasswordClick: () -> Unit
 ) {
     Column(
         Modifier.padding(all = 16.dp),
@@ -30,7 +33,7 @@ fun ForgetPasswordContent(
         EmailTextFiledView(
             Modifier
                 .fillMaxWidth()
-                .testTag(TestTags.PASSWORD_RECOVERY_EMAIL_TEXT_FILED_ID),
+                .testTag(TestTags.EMAIL_TEXT_FILED_ID),
             userEmail,
             emailValidateState,
             onEmailChanged
@@ -38,15 +41,25 @@ fun ForgetPasswordContent(
         RoundButtonView(
             Modifier
                 .fillMaxWidth()
-                .testTag(TestTags.PASSWORD_RECOVERY_BUTTON_ID),
-            stringResource(id = R.string.password_recovery),
+                .testTag(TestTags.CHECK_BUTTON_ID),
+            stringResource(id = R.string.check),
             onSubmitButtonClick
+        )
+        Text(
+            modifier = Modifier
+                .testTag(TestTags.FORGET_PASSWORD_TEXT_ID)
+                .clickable {
+                    onForgetPasswordClick()
+                },
+            text = stringResource(id = R.string.forget_password),
+            onForgetPasswordClick
         )
     }
 }
 
+
 @Preview
 @Composable
-fun ForgotPasswordContentPreview() {
-    ForgetPasswordContent("email", false, {}, {})
+fun ShowSignUpContent() {
+    SignUpContent("email", false, {}, {}, {})
 }

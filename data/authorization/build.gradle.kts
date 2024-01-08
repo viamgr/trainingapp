@@ -19,7 +19,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -68,7 +71,6 @@ dependencies {
 
     androidTestImplementation(libs.test.espresso)
     androidTestImplementation(libs.test.coroutines)
-    androidTestImplementation(libs.test.ktx)
-
+    androidTestImplementation(libs.test.junit)
 
 }

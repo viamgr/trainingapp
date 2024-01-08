@@ -3,7 +3,7 @@ package com.training.trainingapp.view
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.training.app.trainingapp.main.view.signup.SignUpPageView
+import com.training.app.trainingapp.main.view.signup.SignUpContent
 import com.training.app.trainingapp.utils.TestTags
 import org.junit.Rule
 import org.junit.Test
@@ -17,14 +17,12 @@ class RegisterPageViewTest {
 
     @Test
     fun givenView_WhenViewCreate_ThenShouldAllViewDisplayed() {
-
         composeTestRule.setContent {
-            SignUpPageView("",
-                           false,
-                           onEmailChanged = {
-                           },
-                           onSubmitButtonClick = {
-                           })
+            SignUpContent("",
+                false,
+                onEmailChanged = {},
+                onSubmitButtonClick = {},
+                onForgetPasswordClick = {})
         }
 
         composeTestRule.onNodeWithTag(TestTags.EMAIL_TEXT_FILED_ID).assertExists()
